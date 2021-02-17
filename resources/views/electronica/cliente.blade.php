@@ -13,7 +13,7 @@
 
 
 <div class="titulo-reporte">
-    <h1>Reporte pago</h1>
+    <h1>Reporte Cliente</h1>
 </div>
 <br>
 <!-------------------------------------------------- Tabla de Consulta(Reporte) ---------------------------------------------------------------->
@@ -28,11 +28,9 @@
                 <tr>
                     <th>Clave</th>
                     <th>Nombre Cliente</th>
-                    <th>Monto Pagado</th>
-                    <th>Fecha de Pago</th>
-                    <th>Hora de Pago</th>
-                    <th>Forma de Pago</th>
-                    <th>Facturacion</th>
+                    <th>Email</th>
+                    <th>Estado</th>
+                    <th>Telefono</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
@@ -40,13 +38,13 @@
                 <tr>
                     <td data-label="Clave"><span class="block-id">01</span></td>
                     
-                    <td data-label="Nombre Cliente">Usuario</td>
-                    <td data-label="Monto Pagado">$8000</td>
-                    <td data-label="Fecha de Pago">10/01/2012</td>
-                    <td data-label="Hora de Pago">13:10:00</td>
-                    <td data-label="Forma de Pago ">Efectivo</td>
-                    <td data-label="Facturacion "></td>
-                    
+                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
+                    <td data-label="Email" >
+                        <span class="block-email">doe@example.com</span>
+                    </td>
+                    <td data-label="Estado">Estado de Mexico</td>
+                    <td data-label="Telefono">5529983634</td>
+                                        
                     <td>
                         <i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i>
                         
@@ -57,13 +55,13 @@
                 <tr>
                     <td data-label="Clave"><span class="block-id">02</span></td>
                    
-                    <td data-label="Nombre Cliente">Usuario</td>
-                    <td data-label="Monto Pagado">$8000</td>
-                    <td data-label="Fecha de Pago">10/01/2012</td>
-                     <td data-label="Hora de Pago">13:10:00</td>
-                    <td data-label="Forma de Pago">Efectivo</td>
-                    <td data-label="Facturacion "></td>
-                    
+                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
+                     <td data-label="Email" >
+                        <span class="block-email">doe@example.com</span>
+                    </td>
+                    <td data-label="Estado">Estado de Mexico</td>
+                    <td data-label="Telefono">5529983634</td>
+                                        
                     <td>
                         <i class="fas fa-trash delete"></i>
                         <i class="far fa-edit edit"></i>
@@ -72,13 +70,13 @@
                 <tr>
                     <td data-label="Clave"><span class="block-id">03</span></td>
                     
-                    <td data-label="Nombre Cliente">Usuario</td>
-                    <td data-label="Monto Pagado">$8000</td>
-                    <td data-label="Fecha de Pago">10/01/2012</td>
-                    <td data-label="Hora de Pago">13:10:00</td>
-                    <td data-label="Forma de Pago">Efectivo</td>
-                    <td data-label="Facturacion "></td>
-                    
+                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
+                    <td data-label="Email" >
+                        <span class="block-email">doe@example.com</span>
+                    </td>
+                    <td data-label="Estado">Estado de Mexico</td>
+                    <td data-label="Telefono">5529983634</td>
+                                        
                     <td>
                         <i class="fas fa-trash delete"></i>
                         <i class="far fa-edit edit"></i>
@@ -88,13 +86,13 @@
                 <tr>
                     <td data-label="Clave"><span class="block-id">04</span></td>
                     
-                    <td data-label="Nombre Cliente">Usuario</td>
-                    <td data-label="Monto Pagado">$8000</td>
-                    <td data-label="Fecha de Pago">10/01/2012</td>
-                    <td data-label="Hora de Pago">13:10:00</td>
-                    <td data-label="Forma de Pago">Efectivo</td>
-                    <td data-label="Facturacion "></td>
-                    
+                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
+                    <td data-label="Email" >
+                        <span class="block-email">doe@example.com</span>
+                    </td>
+                    <td data-label="Estado">Estado de Mexico</td>
+                    <td data-label="Telefono">5529983634</td>
+                                        
                     <td>
                         <i class="fas fa-trash delete"></i>
                         <i class="far fa-edit edit"></i>
@@ -104,13 +102,13 @@
                 <tr>
                     <td data-label="Clave"><span class="block-id">05</span></td>
                     
-                    <td data-label="Nombre Cliente">Usuario</td>
-                    <td data-label="Monto Pagado">$8000</td>
-                    <td data-label="Fecha de Pago">10/01/2012</td>
-                    <td data-label="Hora de Pago">13:10:00</td>
-                    <td data-label="Forma de Pago">Efectivo</td>
-                    <td data-label="Facturacion "></td>
-                    
+                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
+                    <td data-label="Email" >
+                        <span class="block-email">doe@example.com</span>
+                    </td>
+                    <td data-label="Estado">Estado de Mexico</td>
+                    <td data-label="Telefono">5529983634</td>
+                                        
                     <td>
                         <i class="fas fa-trash delete"></i>
                         <i class="far fa-edit edit"></i>
@@ -120,13 +118,13 @@
                 <tr>
                     <td data-label="Clave"><span class="block-id">06</span></td>
                     
-                    <td data-label="Nombre Cliente">Usuario</td>
-                    <td data-label="Monto Pagado">$8000</td>
-                    <td data-label="Fecha de Pago">10/01/2012</td>
-                    <td data-label="Hora de Pago">13:10:00</td>
-                    <td data-label="Forma de Pago">Efectivo</td>
-                    <td data-label="Facturacion "></td>
-                    
+                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
+                    <td data-label="Email" >
+                        <span class="block-email">doe@example.com</span>
+                    </td>
+                    <td data-label="Estado">Estado de Mexico</td>
+                    <td data-label="Telefono">5529983634</td>
+                                        
                     <td>
                         <i class="fas fa-trash delete"></i>
                         <i class="far fa-edit edit"></i>
@@ -164,9 +162,6 @@
   </div>
 </div>
 </center>
-
-
-
 
 
 

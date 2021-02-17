@@ -133,3 +133,19 @@ background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(28,121,195,0.70071778
 i{
     cursor: pointer;
 }
+
+/*Titulu Tabla reporte*/
+.titulo-reporte{
+    text-align: center;
+}
+
+/*Subtitulo en rea formulario pago*/
+.sub-titulo{
+    color: black;
+}
+
+/*Forma de pago*/
+.credit-card-div  span { padding-top:10px; }
+.credit-card-div img { padding-top:30px; }
+.credit-card-div .small-font { font-size:9px; }
+.credit-card-div .pad-adjust { padding-top:10px; }

@@ -21,6 +21,31 @@ class electronicacontroller extends Controller
         return view ('electronica/tablas');
     }
 
+    public function pago()
+    {
+        return view ('electronica/pago');
+    }
+
+    public function moneda()
+    {
+        return view ('electronica/moneda');
+    }
+
+    public function formapago()
+    {
+        return view ('electronica/formapago');
+    }
+
+    public function metodopago()
+    {
+        return view ('electronica/metodopago');
+    }
+
+    public function cliente()
+    {
+        return view ('electronica/cliente');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
