@@ -11,7 +11,7 @@
 </div>
 
 <div class="titulo-reporte">
-    <h1>Metodo de pago</h1>
+    <h1>Estados</h1>
 </div>
 <!-------------------------------------------------- Boton Agregar Modal ---------------------------------------------------------------->
 <div class="content-agregar">
@@ -32,28 +32,30 @@
 <div class=" row col-md-13">
             <div class="card" id="card-form">
               <center>
-                <div class="card-header" id="registrarse">Metodo de pago</div>
+                <div class="card-header" id="registrarse">Registro Estados</div>
               </center>
                 <div class="card-body">
-                    <form action = "{{route('guardarmetodopago')}}" method = "POST">  
-                    {{csrf_field()}} 
-                      
+                    <form action = "{{route('guardarestado')}}" method = "POST">  
+                    {{csrf_field()}}                    
 <br>
 <br>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Descripción:</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Nombre Estado:</label>
                             <label for="name" class="col-md-1 col-form-label text-md-right asterisco">*</label>
 
+                            
+
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control " name="metodo_pago" placeholder="Escriba el metodo de pago"  required autocomplete="name" autofocus>
-                                @if($errors->first('metodo_pago'))
-                            <p class="text-danger">{{$errors->first('metodo_pago')}}</p>
+                                <input id="estado" type="text" class="form-control" value="{{old('estado')}}" name="nombre_estado" placeholder="Escriba el nuevo estado"  required autocomplete="name" autofocus>
+                            @if($errors->first('estado'))
+                            <p class="text-danger">{{$errors->first('estado')}}</p>
                             @endif
-                                   
                             </div>
+                            
 
                         </div>
-                </div>
+
+        
 
 
 <br>
@@ -71,6 +73,7 @@
                             </div>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -97,14 +100,14 @@
             <thead>
                 <tr>
                     <th>Clave</th>
-                    <th>Metodo de pago</th>
+                    <th>Moneda</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td data-label="Clave"><span class="block-id">01</span></td>
-                    <td data-label="Metodo de pago">Pago en una sola exhibición</td>                
+                    <td data-label="Moneda">Estado 1</td>                
                     <td>
                         <i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i>
                         
@@ -114,13 +117,48 @@
                 </tr>
                 <tr>
                     <td data-label="Clave"><span class="block-id">02</span></td>
-                    <td data-label="Metodo de pago">Pago en parcialidades o diferido</td>
+                    <td data-label="Moneda">Estado 1</td>
                     <td>
                         <i class="fas fa-trash delete"></i>
                         <i class="far fa-edit edit"></i>
                     </td>
                 </tr>
-                
+                <tr>
+                    <td data-label="Clave"><span class="block-id">03</span></td>
+                    <td data-label="Moneda">Estado 1</td>
+                    <td>
+                        <i class="fas fa-trash delete"></i>
+                        <i class="far fa-edit edit"></i>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td data-label="Clave"><span class="block-id">04</span></td>
+                    <td data-label="Moneda">Estado 1</td>
+                    <td>
+                        <i class="fas fa-trash delete"></i>
+                        <i class="far fa-edit edit"></i>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td data-label="Clave"><span class="block-id">05</span></td>
+                    <td data-label="Moneda">Estado 1</td>
+                    <td>
+                        <i class="fas fa-trash delete"></i>
+                        <i class="far fa-edit edit"></i>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td data-label="Clave"><span class="block-id">06</span></td>
+                    <td data-label="Moneda">Estado 1</td>
+                    <td>
+                        <i class="fas fa-trash delete"></i>
+                        <i class="far fa-edit edit"></i>
+                    </td>
+
+                </tr>
             </tbody>
         </table>
     </div>

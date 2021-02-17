@@ -35,21 +35,27 @@
                 <div class="card-header" id="registrarse">Registro Moneda</div>
               </center>
                 <div class="card-body">
-                    <form method="POST" action="">
-                      
+                    <form action = "{{route('guardarmoneda')}}" method = "POST">  
+                    {{csrf_field()}}                    
 <br>
 <br>
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">Nombre:</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Moneda:</label>
                             <label for="name" class="col-md-1 col-form-label text-md-right asterisco">*</label>
 
+                            
+
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control " name="name" placeholder="Escriba el tipo de moneda"  required autocomplete="name" autofocus>
-                                   
+                                <input id="tipo_moneda" type="text" class="form-control" value="{{old('tipo_moneda')}}" name="tipo_moneda" placeholder="Escriba el tipo de moneda"  required autocomplete="name" autofocus>
+                            @if($errors->first('tipo_moneda'))
+                            <p class="text-danger">{{$errors->first('tipo_moneda')}}</p>
+                            @endif
                             </div>
+                            
 
                         </div>
-                </div>
+
+        
 
 
 <br>
@@ -67,6 +73,7 @@
                             </div>
                         </div>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>

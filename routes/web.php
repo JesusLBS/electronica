@@ -29,12 +29,21 @@ Route::get('electronica_pago',[electronicacontroller::class,'pago'])->name('pago
 
 /*Moneda*/
 Route::get('electronica_moneda',[electronicacontroller::class,'moneda'])->name('moneda');
+Route::post('electronica_guardarmoneda',[electronicacontroller::class,'guardarmoneda'])->name('guardarmoneda');
 
 /*Forma de pago*/
 Route::get('electronica_formapago',[electronicacontroller::class,'formapago'])->name('formapago');
+Route::post('electronica_guardarformapago',[electronicacontroller::class,'guardarformapago'])->name('guardarformapago');
 
 /*Metodo de pago*/
 Route::get('electronica_metodopago',[electronicacontroller::class,'metodopago'])->name('metodopago');
+Route::post('electronica_guardarmetodopago',[electronicacontroller::class,'guardarmetodopago'])->name('guardarmetodopago');
+
+/*estado*/
+Route::get('electronica_estado',[electronicacontroller::class,'estado'])->name('estado');
+Route::post('electronica_guardarestado',[electronicacontroller::class,'guardarestado'])->name('guardarestado');
+
 
 /*Cliente*/
 Route::get('electronica_cliente',[electronicacontroller::class,'cliente'])->name('cliente');
+Route::post('electronica_guardarcliente',[electronicacontroller::class,'guardarcliente'])->name('guardarcliente');

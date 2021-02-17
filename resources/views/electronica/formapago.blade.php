@@ -35,8 +35,8 @@
                 <div class="card-header" id="registrarse">Forma de pago</div>
               </center>
                 <div class="card-body">
-                    <form method="POST" action="">
-                      
+                      <form action = "{{route('guardarformapago')}}" method = "POST">  
+                      {{csrf_field()}} 
 <br>
 <br>
                         <div class="form-group row">
@@ -44,8 +44,10 @@
                             <label for="name" class="col-md-1 col-form-label text-md-right asterisco">*</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control " name="name" placeholder="Escriba la forma de pago"  required autocomplete="name" autofocus>
-                                   
+                                <input id="name" type="text" class="form-control" value="{{old('forma_pago')}}" name="forma_pago" placeholder="Escriba la forma de pago"  required autocomplete="name" autofocus>
+                                @if($errors->first('forma_pago'))
+                                <p class="text-danger">{{$errors->first('forma_pago')}}</p>
+                                @endif  
                             </div>
 
                         </div>
