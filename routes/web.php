@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\electronicacontroller;
+use App\Http\Controllers\logincontroller;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,9 +17,21 @@ use App\Http\Controllers\electronicacontroller;
 |
 */
 
+
+/*Login*/
 Route::get('/', function () {
     return view('login/login');
 });
+/*Captcha - Login*/
+Route::post('logincaptcha',[logincontroller::class,'logincaptcha'])->name('logincaptcha');
+Route::get('reload',[logincontroller::class,'reload'])->name('reload');
+
+
+
+
+
+
+
 /*Index*/
 Route::get('electronica_index',[electronicacontroller::class,'index']);
 
@@ -47,3 +61,5 @@ Route::post('electronica_guardarestado',[electronicacontroller::class,'guardares
 /*Cliente*/
 Route::get('electronica_cliente',[electronicacontroller::class,'cliente'])->name('cliente');
 Route::post('electronica_guardarcliente',[electronicacontroller::class,'guardarcliente'])->name('guardarcliente');
+
+

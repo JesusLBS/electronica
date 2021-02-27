@@ -12,6 +12,10 @@
     <!-- Title Page-->
     <title>Login</title>
 
+
+    <!--jquery cdn-->
+
+
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -47,14 +51,26 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="" method="post">
+                            <!--------------------------------------------------Login---------------------------------------------------------------->
+                            <form action="{{route('logincaptcha')}}" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email" required="">
+                                    @if($errors->first('email'))
+                                    <p class="text-danger">
+                                        {{$errors->first('email')}}
+                                    </p>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
+                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password" required="">
+                                    @if($errors->first('password'))
+                                    <p class="text-danger">
+                                        {{$errors->first('password')}}
+                                    </p>
+                                    @endif
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
@@ -64,6 +80,22 @@
                                         <a href="#">Forgotten Password?</a>
                                     </label>
                                 </div>
+                                <div class="form-group">
+                                    <span id="captcha-img">
+                                        {!!captcha_img('math')!!}
+                                    </span>
+                                    <button id="reload" type="button" class="btn btn-success"><i class="fas fa-sync"></i></button>
+                                    
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <input class="au-input au-input--full" type="text" name="captcha" placeholder="Ingresa el captcha" required="">
+                                    @if($errors->first('captcha'))
+                                    <p class="text-danger">
+                                        {{$errors->first('captcha')}}
+                                    </p>
+                                    @endif
+                                </div>
                                 <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
@@ -72,6 +104,7 @@
                                     </div>
                                 </div>
                             </form>
+                            <!--------------------------------------------------Login---------------------------------------------------------------->
                             <div class="register-link">
                                 <p>
                                     Don't you have account?
@@ -111,6 +144,21 @@
     <script src="js/main.js"></script>
 
 </body>
+
+<!--------------------------------------------------Script---------------------------------------------------------------->
+<script type="text/javascript">
+    $('#reload').click(function(e){
+        e.preventDefault();
+        $.ajax({
+            type:'GET',
+            url: 'reload',
+            success:function(res){
+                $('#captcha-img').html(res.captcha);
+            }
+        });
+    });
+</script>
+<!--------------------------------------------------Script---------------------------------------------------------------->
 
 </html>
 <!-- end document-->
