@@ -10,11 +10,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Login</title>
-
-
-    <!--jquery cdn-->
-
+    <title>Registro</title>
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -51,64 +47,37 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <!--------------------------------------------------Login---------------------------------------------------------------->
                             <form action="{{route('logincaptcha')}}" method="POST">
                                 @csrf
                                 <div class="form-group">
+                                    <label>Username</label>
+                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                </div>
+                                <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email" required="">
-                                    @if($errors->first('email'))
-                                    <p class="text-danger">
-                                        {{$errors->first('email')}}
-                                    </p>
-                                    @endif
+                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password" required="">
-                                    @if($errors->first('password'))
-                                    <p class="text-danger">
-                                        {{$errors->first('password')}}
-                                    </p>
-                                    @endif
+                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
-                                        <input type="checkbox" name="remember">Remember Me
-                                    </label>
-                                    <label>
-                                        <a href="#">Forgotten Password?</a>
+                                        <input type="checkbox" name="aggree">Agree the terms and policy
                                     </label>
                                 </div>
-                                <div class="form-group">
-                                    <span id="captcha-img">
-                                        {!!captcha_img('math')!!}
-                                    </span>
-                                    <button id="reload" type="button" class="btn btn-success"><i class="fas fa-sync"></i></button>
-                                    
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <input class="au-input au-input--full" type="text" name="captcha" placeholder="Ingresa el captcha" required="">
-                                    @if($errors->first('captcha'))
-                                    <p class="text-danger">
-                                        {{$errors->first('captcha')}}
-                                    </p>
-                                    @endif
-                                </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
-                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
-                                        <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
+                                        <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
+                                        <button class="au-btn au-btn--block au-btn--blue2">register with twitter</button>
                                     </div>
                                 </div>
                             </form>
-                            <!--------------------------------------------------Login---------------------------------------------------------------->
                             <div class="register-link">
                                 <p>
-                                    Don't you have account?
-                                    <a href="{{route('registro')}}">Sign Up Here</a>
+                                    Already have account?
+                                    <a href="{{route('/')}}">Sign In</a>
                                 </p>
                             </div>
                         </div>
@@ -144,21 +113,6 @@
     <script src="js/main.js"></script>
 
 </body>
-
-<!--------------------------------------------------Script---------------------------------------------------------------->
-<script type="text/javascript">
-    $('#reload').click(function(e){
-        e.preventDefault();
-        $.ajax({
-            type:'GET',
-            url: 'reload',
-            success:function(res){
-                $('#captcha-img').html(res.captcha);
-            }
-        });
-    });
-</script>
-<!--------------------------------------------------Script---------------------------------------------------------------->
 
 </html>
 <!-- end document-->

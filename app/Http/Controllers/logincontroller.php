@@ -13,7 +13,7 @@ class logincontroller extends Controller
      */
     public function index()
     {
-        //
+        return view('login/login');
     }
 
 /*Captcha-Login*/
@@ -35,6 +35,11 @@ class logincontroller extends Controller
     {
         return response()->json(['captcha' => captcha_img()]);
         
+    }
+
+    public function registro()
+    {
+        return view ('login/registro');
     }
   
 

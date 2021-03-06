@@ -19,15 +19,18 @@ use App\Http\Controllers\logincontroller;
 
 
 /*Login*/
-Route::get('/', function () {
-    return view('login/login');
-});
+
+
+Route::get('/',[logincontroller::class,'index'])->name('/');
+
 /*Captcha - Login*/
-Route::post('logincaptcha',[logincontroller::class,'logincaptcha'])->name('logincaptcha');
 Route::get('reload',[logincontroller::class,'reload'])->name('reload');
+Route::post('logincaptcha',[logincontroller::class,'logincaptcha'])->name('logincaptcha');
 
+/*Registro*/
 
-
+Route::get('registro',[logincontroller::class,'registro'])->name('registro');
+Route::post('registroe',[logincontroller::class,'store'])->name('registroe');
 
 
 
