@@ -47,14 +47,14 @@
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="{{route('logincaptcha')}}" method="POST">
+                            <form action="{{route('registroe')}}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label>Username</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
+                                    <label>Nombre</label>
+                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Nombre">
                                 </div>
                                 <div class="form-group">
-                                    <label>Email Address</label>
+                                    <label>Email </label>
                                     <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
@@ -66,7 +66,7 @@
                                         <input type="checkbox" name="aggree">Agree the terms and policy
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Registrarse</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>

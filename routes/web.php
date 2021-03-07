@@ -32,6 +32,9 @@ Route::post('logincaptcha',[logincontroller::class,'logincaptcha'])->name('login
 Route::get('registro',[logincontroller::class,'registro'])->name('registro');
 Route::post('registroe',[logincontroller::class,'store'])->name('registroe');
 
+// Logout 
+Route::post('salir', [logincontroller::class, 'salir'])->name('salir');
+
 
 
 

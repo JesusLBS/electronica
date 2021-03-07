@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Auth;
 
 class logincontroller extends Controller
 {
@@ -41,6 +43,7 @@ class logincontroller extends Controller
     {
         return view ('login/registro');
     }
+
   
 
 
@@ -62,8 +65,37 @@ class logincontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = $this->validate(request(), [
+            'name'      => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+           
+
+        ]);
+        
+        $newuser = new User;
+
+         
+        $newuser->name      = $request->input('name'); 
+        $newuser->email      = $request->input('email'); 
+        $newuser->password    = $request->input('password'); 
+
+           
+        $newuser->fill([
+            'password' => hash("sha256",$request->password),
+        ])->save();
+
+        
+        return redirect()->to('electronica_index');
     }
+
+
+    public function salir(){
+        Auth::logout();
+        return redirect()->intended('/');
+    }
+
+
 
     /**
      * Display the specified resource.

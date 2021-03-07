@@ -428,8 +428,13 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                <form id="login56" action="{{route('salir')}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <i class="zmdi zmdi-power"></i>
+                                                    <input class="btn btn-outline-danger " type="submit" name="salir" value="Salir">
+                                                </form>
+                                                
                                             </div>
                                         </div>
                                     </div>
