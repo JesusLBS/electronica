@@ -14,14 +14,14 @@ class CreatePagoclientesTable extends Migration
     public function up()
     {
         Schema::create('pagoclientes', function (Blueprint $table) {
-            $table->id('id_cliente');
+            $table->id('id_pcliente');
             $table->string('nombre_cliente',40);
             $table->string('apellido_pcliente',40);
             $table->string('apellido_mcliente',40);
             $table->string('direccion_cliente',40);
             $table->string('departamento_cliente',40);
             $table->string('colonia_cliente',40);
-            $table->string('ciudad_cliente',40);
+            $table->string('ciudad_cliente');
 
             
 
@@ -30,9 +30,9 @@ class CreatePagoclientesTable extends Migration
 
 
 
-            $table->string('codigo_postalcliente',40);
+            $table->integer('codigo_postalcliente');
             $table->string('email_cliente',40);
-            $table->string('celular_cliente',40);       
+            $table->integer('celular_cliente');       
             $table->rememberToken();
             $table->timestamps();
         });
@@ -46,6 +46,5 @@ class CreatePagoclientesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('pagoclientes');
-        
     }
 }

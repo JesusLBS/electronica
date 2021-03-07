@@ -6,6 +6,25 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Auth;
 
+
+use App\Models\detalleventas;
+use App\Models\empleados;
+use App\Models\estados;
+use App\Models\facturas;
+use App\Models\formapagos;
+use App\Models\marcas;
+use App\Models\metodopagos;
+use App\Models\monedas;
+use App\Models\municipios;
+use App\Models\pagoclientes;
+use App\Models\productcategorias;
+use App\Models\productos;
+use App\Models\proveedores;
+use App\Models\razonsocial;
+use App\Models\tipoempleados;
+use App\Models\tipofactura;
+
+
 class logincontroller extends Controller
 {
     /**
@@ -45,6 +64,15 @@ class logincontroller extends Controller
     }
 
   
+/*Consultas*/
+
+
+    public function consulta()
+    {
+
+        $consulta1 = tipofactura::all();
+        return $consulta1;
+    }
 
 
     /**

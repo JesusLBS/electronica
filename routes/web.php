@@ -35,7 +35,8 @@ Route::post('registroe',[logincontroller::class,'store'])->name('registroe');
 // Logout 
 Route::post('salir', [logincontroller::class, 'salir'])->name('salir');
 
-
+//Consulta
+Route::get('consulta',[logincontroller::class,'consulta'])->name('consulta');
 
 
 /*Index*/
