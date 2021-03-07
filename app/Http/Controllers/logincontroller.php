@@ -70,8 +70,57 @@ class logincontroller extends Controller
     public function consulta()
     {
 
-        $consulta1 = tipofactura::all();
+        /*
+        // Consulta
+        $consulta1 = marcas::all();
+
         return $consulta1;
+        */
+
+
+
+        /*
+        // Eliminacion
+        $marcas = marcas::find(3);
+        $marcas->delete();
+
+        return "Eliminacion exiosa";*/
+
+        /*
+        // Consulta con bajas logicas 
+         $consulta2 = marcas::withTrashed()->get();
+         return $consulta2;
+         */
+
+         /*
+        // SOLO Consulta  bajas logicas 
+         $consulta3 = marcas::onlyTrashed()->get();
+         return $consulta3;
+         */
+
+         /*
+        // Consulta  bajas logicas con where
+         $consulta4 = marcas::onlyTrashed()
+                      where('','')
+                      ->get();
+         return $consulta4;
+         */
+
+         /*
+         //Restaurando informacion de una baja logica
+         marcas::withTrashed()->where('id_marca',3)->restore(); 
+         return "Restauracion exiosa";
+         */
+
+         /*
+         //Eliminacion definitiva de un registro (Eliminacion fisica)
+         $marcas = marcas::find(2)->forceDelete();
+         $consulta5 = marcas::all();
+
+         return $consulta5;
+         */
+         
+         
     }
 
 
