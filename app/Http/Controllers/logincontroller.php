@@ -20,9 +20,9 @@ use App\Models\pagoclientes;
 use App\Models\productcategorias;
 use App\Models\productos;
 use App\Models\proveedores;
-use App\Models\razonsocial;
+use App\Models\razonsocials;
 use App\Models\tipoempleados;
-use App\Models\tipofactura;
+use App\Models\tipofacturas;
 
 
 class logincontroller extends Controller
@@ -106,21 +106,63 @@ class logincontroller extends Controller
          return $consulta4;
          */
 
-         /*
-         //Restaurando informacion de una baja logica
-         marcas::withTrashed()->where('id_marca',3)->restore(); 
-         return "Restauracion exiosa";
-         */
+        /*
+        //Restaurando informacion de una baja logica
+        marcas::withTrashed()->where('id_marca',3)->restore(); 
+        return "Restauracion exiosa";
+        */
 
-         /*
-         //Eliminacion definitiva de un registro (Eliminacion fisica)
-         $marcas = marcas::find(2)->forceDelete();
-         $consulta5 = marcas::all();
+        /*
+        //Eliminacion definitiva de un registro (Eliminacion fisica)
+        $marcas = marcas::find(2)->forceDelete();
+        $consulta5 = marcas::all();
 
-         return $consulta5;
-         */
-         
-         
+        return $consulta5;
+        */
+        
+        /* 
+        //Consultas eloquentent
+        //Consulta con condicion de rango edad
+        $consulta = proveedores::where('edad','>=',20)
+                                ->where('edad','<=',30)
+                                ->get();
+        return $consulta;
+        */
+
+        /*
+        //eloquent
+        $consulta = proveedores::whereBetween('edad',[20,30])->get();
+        return $consulta;
+        */
+
+        /*
+        //Consulta sin el * ya que este trae todos los campos
+        $consulta = proveedores::select(['id_proveedor','nombre_proveedor','email_proveedor'])
+                                       ->get();
+        return $consulta;
+        */
+
+        
+        /*
+        // Consulta Join con mas tablas
+   
+        $consulta = proveedores::join('razonsocials','proveedores.razonsocial_id','=','razonsocials.id_razonsocial')
+                ->select('proveedores.id_proveedor','proveedores.nombre_proveedor','razonsocials.nombre_razonsocial')
+                ->get();
+
+        //cuantos registros tengo
+        //$cuantos =count($consulta);
+        */
+
+
+
+
+ 
+
+
+
+//        return $consulta;
+
     }
 
 
