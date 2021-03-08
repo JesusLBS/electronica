@@ -35,102 +35,45 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($consulta2 as $pcliente)
                 <tr>
-                    <td data-label="Clave"><span class="block-id">01</span></td>
+                    <td data-label="Clave"><span class="block-id">{{$pcliente->id_pcliente}}</span></td>
                     
-                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
+                    <td data-label="Nombre Cliente">{{$pcliente->nombre_cliente}} {{$pcliente->apellido_pcliente}} {{$pcliente->apellido_mcliente}}</td>
                     <td data-label="Email" >
-                        <span class="block-email">doe@example.com</span>
+                        <span class="block-email">{{$pcliente->email_cliente}}</span>
                     </td>
-                    <td data-label="Estado">Estado de Mexico</td>
-                    <td data-label="Telefono">5529983634</td>
-                                        
-                    <td>
-                        <i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i>
+                    <td data-label="Estado">{{$pcliente->nombre_estado}}</td>
+                    <td data-label="Telefono">{{$pcliente->celular_cliente}}</td>
+                                         
+                    <td> 
+                        @if($pcliente->deleted_at)
+                        <form id="activarpcliente" action="{{route('activarpcliente',['id_pcliente'=>$pcliente->id_pcliente])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-success">Activar</button>
+                        </form>
+                        <form id="borrarpcliente" action="{{route('borrarpcliente',['id_pcliente'=>$pcliente->id_pcliente])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-"><i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i></button>
+                        </form>
+                        @else
+                        <form id="desactivarpcliente" action="{{route('desactivarpcliente',['id_pcliente'=>$pcliente->id_pcliente])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-warning">Desactivar</button>
+                        </form>
+                        @endif
+
+                        
                         
                         <i class="far fa-edit edit" title="Editar"></i>
                     </td>
                     
                 </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">02</span></td>
-                   
-                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
-                     <td data-label="Email" >
-                        <span class="block-email">doe@example.com</span>
-                    </td>
-                    <td data-label="Estado">Estado de Mexico</td>
-                    <td data-label="Telefono">5529983634</td>
-                                        
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">03</span></td>
-                    
-                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
-                    <td data-label="Email" >
-                        <span class="block-email">doe@example.com</span>
-                    </td>
-                    <td data-label="Estado">Estado de Mexico</td>
-                    <td data-label="Telefono">5529983634</td>
-                                        
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">04</span></td>
-                    
-                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
-                    <td data-label="Email" >
-                        <span class="block-email">doe@example.com</span>
-                    </td>
-                    <td data-label="Estado">Estado de Mexico</td>
-                    <td data-label="Telefono">5529983634</td>
-                                        
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">05</span></td>
-                    
-                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
-                    <td data-label="Email" >
-                        <span class="block-email">doe@example.com</span>
-                    </td>
-                    <td data-label="Estado">Estado de Mexico</td>
-                    <td data-label="Telefono">5529983634</td>
-                                        
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">06</span></td>
-                    
-                    <td data-label="Nombre Cliente">Jesus Chicho Hernandez</td>
-                    <td data-label="Email" >
-                        <span class="block-email">doe@example.com</span>
-                    </td>
-                    <td data-label="Estado">Estado de Mexico</td>
-                    <td data-label="Telefono">5529983634</td>
-                                        
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
+                @endforeach
+        
             </tbody>
         </table>
     </div>

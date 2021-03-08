@@ -5,6 +5,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\electronicacontroller;
 use App\Http\Controllers\logincontroller;
+use App\Http\Controllers\estadoscontroller;
+use App\Http\Controllers\pagoclientescontroller;
+use App\Http\Controllers\monedascontroller;
+use App\Http\Controllers\formapagoscontroller;
+use App\Http\Controllers\metodopagoscontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,28 +50,38 @@ Route::get('electronica_index',[electronicacontroller::class,'index']);
 /*Tablas*/
 Route::get('electronica_tablas',[electronicacontroller::class,'tablas'])->name('tablas');
 
-/*Pago*/
-Route::get('electronica_pago',[electronicacontroller::class,'pago'])->name('pago');
+
 
 /*Moneda*/
-Route::get('electronica_moneda',[electronicacontroller::class,'moneda'])->name('moneda');
-Route::post('electronica_guardarmoneda',[electronicacontroller::class,'guardarmoneda'])->name('guardarmoneda');
+Route::get('electronica_moneda',[monedascontroller::class,'index'])->name('moneda');
+Route::post('electronica_guardarmoneda',[monedascontroller::class,'guardarmoneda'])->name('guardarmoneda');
 
 /*Forma de pago*/
-Route::get('electronica_formapago',[electronicacontroller::class,'formapago'])->name('formapago');
-Route::post('electronica_guardarformapago',[electronicacontroller::class,'guardarformapago'])->name('guardarformapago');
+Route::get('electronica_formapago',[formapagoscontroller::class,'index'])->name('formapago');
+Route::post('electronica_guardarformapago',[formapagoscontroller::class,'guardarformapago'])->name('guardarformapago');
 
 /*Metodo de pago*/
-Route::get('electronica_metodopago',[electronicacontroller::class,'metodopago'])->name('metodopago');
-Route::post('electronica_guardarmetodopago',[electronicacontroller::class,'guardarmetodopago'])->name('guardarmetodopago');
+Route::get('electronica_metodopago',[metodopagoscontroller::class,'index'])->name('metodopago');
+Route::post('electronica_guardarmetodopago',[metodopagoscontroller::class,'guardarmetodopago'])->name('guardarmetodopago');
+//Desactivar
+Route::post('desactivarmetodopago/{id_metodo_pago}',[metodopagoscontroller::class,'desactivarmetodopago'])->name('desactivarmetodopago');
+
 
 /*estado*/
-Route::get('electronica_estado',[electronicacontroller::class,'estado'])->name('estado');
-Route::post('electronica_guardarestado',[electronicacontroller::class,'guardarestado'])->name('guardarestado');
+Route::get('electronica_estado',[estadoscontroller::class,'index'])->name('estado');
+Route::post('electronica_guardarestado',[estadoscontroller::class,'guardarestado'])->name('guardarestado');
 
 
 /*Cliente*/
-Route::get('electronica_cliente',[electronicacontroller::class,'cliente'])->name('cliente');
-Route::post('electronica_guardarcliente',[electronicacontroller::class,'guardarcliente'])->name('guardarcliente');
+Route::get('electronica_cliente',[pagoclientescontroller::class,'index'])->name('cliente');
+Route::post('electronica_guardarcliente',[pagoclientescontroller::class,'guardarcliente'])->name('guardarcliente');
 
+/*Pago Cliente*/
+Route::get('electronica_pago',[pagoclientescontroller::class,'pago'])->name('pago');
+//Desactivar cliente
+Route::post('desactivarpcliente/{id_pcliente}',[pagoclientescontroller::class,'desactivarpcliente'])->name('desactivarpcliente');
+//Activacion
+Route::post('activarpcliente/{id_pcliente}',[pagoclientescontroller::class,'activarpcliente'])->name('activarpcliente');
+//Borrar
+Route::post('borrarpcliente/{id_pcliente}',[pagoclientescontroller::class,'borrarpcliente'])->name('borrarpcliente');
 

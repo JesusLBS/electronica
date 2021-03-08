@@ -3,30 +3,59 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\estados;
+use App\Models\monedas;
 
-class electronicacontroller extends Controller
+class monedascontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return view ('electronica/index');
-    }
+        $consulta = monedas::orderBy('id_moneda','DESC')
+                   ->take(1)->get();
+        $cuantos =count($consulta);
 
-    public function tablas()
-    {
-        return view ('electronica/tablas');
-    }
+        if ($cuantos == 0) {
+            $id_sigue = 1;
+        }
+        else{
+            $id_sigue = $consulta[0]->id_moneda + 1;
+        }
 
-
-
+        //return $id_sigue;
  
+        return view ('electronica/moneda')
+            ->with('id_sigue',$id_sigue);
+    }
 
+    public function guardarmoneda(Request $request)
+    {     
+        
+        $this->validate($request,[
+            'tipo_moneda' => 'required|regex:/^[A-Z][A-Z,a-z, ,ü, é, á, í, ó, ú, ñ]+$/',
+           
+            
+        ]);
 
+        $moneda = new monedas;
+
+         
+        $moneda->id_moneda        = $request->input('id_moneda'); 
+        $moneda->tipo_moneda       = $request->input('tipo_moneda'); 
+        
+
+           
+        $moneda->save();
+
+        
+        return redirect()->to('electronica_moneda');
+
+       
+    }
 
     /**
      * Show the form for creating a new resource.

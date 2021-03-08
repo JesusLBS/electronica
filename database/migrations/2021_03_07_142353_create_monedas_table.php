@@ -16,6 +16,7 @@ class CreateMonedasTable extends Migration
         Schema::create('monedas', function (Blueprint $table) {
             $table->id('id_moneda');
             $table->string('tipo_moneda',40);
+            $table->timestamp('deleted_at')->nullable(); 
             $table->rememberToken();
             $table->timestamps();
         });

@@ -18,11 +18,11 @@ class CreateDetalleventasTable extends Migration
             $table->decimal('cantidad');
 
 
-            $table->unsignedBigInteger('venta_id');
-            $table->foreign('venta_id')->references('id_venta')->on('ventas');
+            $table->unsignedBigInteger('id_venta');
+            $table->foreign('id_venta')->references('id_venta')->on('ventas');
 
-            $table->unsignedBigInteger('producto_id');
-            $table->foreign('producto_id')->references('id_producto')->on('productos');
+            $table->unsignedBigInteger('id_producto');
+            $table->foreign('id_producto')->references('id_producto')->on('productos');
 
 
             $table->rememberToken();

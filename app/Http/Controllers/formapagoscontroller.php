@@ -3,31 +3,62 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\estados;
+use App\Models\formapagos;
 
-class electronicacontroller extends Controller
+class formapagoscontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+ 
+/*-----------------------------------------------------------Start Formapago----------------------------------------------*/
     public function index()
     {
-        return view ('electronica/index');
-    }
+        $consulta = formapagos::orderBy('id_forma_pago','DESC')
+                   ->take(1)->get();
+        $cuantos =count($consulta);
 
-    public function tablas()
-    {
-        return view ('electronica/tablas');
-    }
+        if ($cuantos == 0) {
+            $id_sigue = 1;
+        }
+        else{ 
+            $id_sigue = $consulta[0]->id_forma_pago + 1;
+        }
 
-
-
+        //return $id_sigue;
  
+        return view ('electronica/formapago')
+            ->with('id_sigue',$id_sigue);
+
+    }
 
 
 
+    public function guardarformapago (Request $request)
+    {     
+        
+        $this->validate($request,[
+            'forma_pago' => 'required|regex:/^[A-Z][A-Z,a-z, ,ü, é, á, í, ó, ú, ñ]+$/',
+        ]);
+
+        $moneda = new formapagos;
+
+         
+        $moneda->id_forma_pago    = $request->input('id_forma_pago'); 
+        $moneda->forma_pago       = $request->input('forma_pago'); 
+        
+
+           
+        $moneda->save();
+
+        
+        return redirect()->to('electronica_formapago');
+
+       
+    }
+/*-----------------------------------------------------------End Formapago----------------------------------------------*/
     /**
      * Show the form for creating a new resource.
      *

@@ -41,6 +41,14 @@
 <br>
 <br>
                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Clave:</label>
+                            <label for="name" class="col-md-1 col-form-label text-md-right asterisco"></label>                         
+
+                            <div class="col-md-6">
+                                <input id="id_metodo_pago" type="text" class="form-control" value="{{$id_sigue}}" readonly="readonly" name="id_metodo_pago"  required autocomplete="id_metodo_pago" autofocus disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Descripción:</label>
                             <label for="name" class="col-md-1 col-form-label text-md-right asterisco">*</label>
 
@@ -102,24 +110,26 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($consulta2 as $metodop)
                 <tr>
-                    <td data-label="Clave"><span class="block-id">01</span></td>
-                    <td data-label="Metodo de pago">Pago en una sola exhibición</td>                
+                    <td data-label="Clave"><span class="block-id">{{$metodop->id_metodo_pago}}</span></td>
+                    <td data-label="Metodo de pago">{{$metodop->metodo_pago}}</td>                
                     <td>
-                        <i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i>
+                       
+
+                        <form id="desactivarmetodopago" action="{{route('desactivarmetodopago',['id_metodo_pago'=>$metodop->id_metodo_pago])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-warning">Desactivar</button>
+                                                </form>
+
                         
+                        <i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i>
                         <i class="far fa-edit edit" title="Editar"></i>
                     </td>
                     
                 </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">02</span></td>
-                    <td data-label="Metodo de pago">Pago en parcialidades o diferido</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-                </tr>
+                @endforeach
                 
             </tbody>
         </table>

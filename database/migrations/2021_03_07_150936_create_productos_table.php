@@ -24,14 +24,14 @@ class CreateProductosTable extends Migration
             $table->string('garantiaextendida_producto',40);
 
 
-            $table->unsignedBigInteger('pcategoria_id');
-            $table->foreign('pcategoria_id')->references('id_pcategoria')->on('productcategorias');
+            $table->unsignedBigInteger('id_pcategoria');
+            $table->foreign('id_pcategoria')->references('id_pcategoria')->on('productcategorias');
 
-            $table->unsignedBigInteger('marca_id');
-            $table->foreign('marca_id')->references('id_marca')->on('marcas');
+            $table->unsignedBigInteger('id_marca');
+            $table->foreign('id_marca')->references('id_marca')->on('marcas');
 
-            $table->unsignedBigInteger('proveedor_id');
-            $table->foreign('proveedor_id')->references('id_proveedor')->on('proveedores');
+            $table->unsignedBigInteger('id_proveedor');
+            $table->foreign('id_proveedor')->references('id_proveedor')->on('proveedores');
 
 
             $table->rememberToken();

@@ -84,7 +84,7 @@ class logincontroller extends Controller
         $marcas = marcas::find(3);
         $marcas->delete();
 
-        return "Eliminacion exiosa";*/
+        return "Eliminacion exitosa";*/
 
         /*
         // Consulta con bajas logicas 
@@ -186,8 +186,8 @@ class logincontroller extends Controller
     {
         $user = $this->validate(request(), [
             'name'      => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'  => ['required', 'string', 'min:8'],
            
 
         ]);
@@ -195,8 +195,8 @@ class logincontroller extends Controller
         $newuser = new User;
 
          
-        $newuser->name      = $request->input('name'); 
-        $newuser->email      = $request->input('email'); 
+        $newuser->name        = $request->input('name'); 
+        $newuser->email       = $request->input('email'); 
         $newuser->password    = $request->input('password'); 
 
            

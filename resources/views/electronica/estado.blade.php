@@ -40,15 +40,23 @@
 <br>
 <br>
                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Clave estado:</label>
+                            <label for="name" class="col-md-1 col-form-label text-md-right asterisco"></label>                         
+
+                            <div class="col-md-6">
+                                <input id="id_estado" type="text" class="form-control" value="{{$id_sigue}}" readonly="readonly" name="id_estado"  required autocomplete="id_estado" autofocus disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Nombre Estado:</label>
                             <label for="name" class="col-md-1 col-form-label text-md-right asterisco">*</label>
 
                             
 
                             <div class="col-md-6">
-                                <input id="estado" type="text" class="form-control" value="{{old('estado')}}" name="nombre_estado" placeholder="Escriba el nuevo estado"  required autocomplete="name" autofocus>
-                            @if($errors->first('estado'))
-                            <p class="text-danger">{{$errors->first('estado')}}</p>
+                                <input id="nombre_estado" type="text" class="form-control" value="{{old('nombre_estado')}}" name="nombre_estado" placeholder="Escriba el nuevo estado"  required autocomplete="name" autofocus>
+                            @if($errors->first('nombre_estado'))
+                            <p class="text-danger">{{$errors->first('nombre_estado')}}</p>
                             @endif
                             </div>
                             

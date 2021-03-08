@@ -23,17 +23,17 @@ class CreateFacturasTable extends Migration
             $table->integer('codigo_postalcliente');
 
 
-            $table->unsignedBigInteger('municipio_id');
-            $table->foreign('municipio_id')->references('id_municipio')->on('municipios');
+            $table->unsignedBigInteger('id_municipio');
+            $table->foreign('id_municipio')->references('id_municipio')->on('municipios');
 
-            $table->unsignedBigInteger('estado_id');
-            $table->foreign('estado_id')->references('id_estado')->on('estados');
+            $table->unsignedBigInteger('id_estado');
+            $table->foreign('id_estado')->references('id_estado')->on('estados');
 
-            $table->unsignedBigInteger('razonsocial_id');
-            $table->foreign('razonsocial_id')->references('id_razonsocial')->on('razonsocials');
+            $table->unsignedBigInteger('id_razonsocial');
+            $table->foreign('id_razonsocial')->references('id_razonsocial')->on('razonsocials');
 
-            $table->unsignedBigInteger('tipofactura_id');
-            $table->foreign('tipofactura_id')->references('id_tipofactura')->on('tipofacturas');
+            $table->unsignedBigInteger('id_tipofactura');
+            $table->foreign('id_tipofactura')->references('id_tipofactura')->on('tipofacturas');
             
 
 

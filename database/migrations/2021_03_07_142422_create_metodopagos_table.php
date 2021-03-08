@@ -16,6 +16,7 @@ class CreateMetodopagosTable extends Migration
         Schema::create('metodopagos', function (Blueprint $table) {
             $table->id('id_metodo_pago');
             $table->string('metodo_pago',40);
+            $table->timestamp('deleted_at')->nullable(); 
             $table->rememberToken();
             $table->timestamps();
         });

@@ -40,6 +40,14 @@
 <br>
 <br>
                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Clave moneda:</label>
+                            <label for="name" class="col-md-1 col-form-label text-md-right asterisco"></label>                         
+
+                            <div class="col-md-6">
+                                <input id="id_moneda" type="text" class="form-control" value="{{$id_sigue}}" readonly="readonly" name="id_moneda"  required autocomplete="id_moneda" autofocus disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Moneda:</label>
                             <label for="name" class="col-md-1 col-form-label text-md-right asterisco">*</label>
 

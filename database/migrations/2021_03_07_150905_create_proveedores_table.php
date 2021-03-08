@@ -22,8 +22,8 @@ class CreateProveedoresTable extends Migration
             $table->string('tipopersona_proveedor',40);
 
 
-            $table->unsignedBigInteger('razonsocial_id');
-            $table->foreign('razonsocial_id')->references('id_razonsocial')->on('razonsocials');
+            $table->unsignedBigInteger('id_razonsocial');
+            $table->foreign('id_razonsocial')->references('id_razonsocial')->on('razonsocials');
 
 
             $table->rememberToken();

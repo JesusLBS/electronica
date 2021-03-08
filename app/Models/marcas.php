@@ -16,4 +16,4 @@ class marcas extends Model
     protected $fillable=["id_marca", "nombre_marca","deleted_at"];
 }
 
-
+ 

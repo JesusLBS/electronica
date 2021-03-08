@@ -23,11 +23,11 @@ class CreateVentasTable extends Migration
             $table->decimal('total_venta');
 
 
-            $table->unsignedBigInteger('pcliente_id');
-            $table->foreign('pcliente_id')->references('id_pcliente')->on('pagoclientes');
+            $table->unsignedBigInteger('id_pcliente');
+            $table->foreign('id_pcliente')->references('id_pcliente')->on('pagoclientes');
 
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('id');
+            $table->foreign('id')->references('id')->on('users');
 
 
             $table->rememberToken();

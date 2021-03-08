@@ -16,6 +16,7 @@ class CreateFormapagosTable extends Migration
         Schema::create('formapagos', function (Blueprint $table) {
             $table->id('id_forma_pago');
             $table->string('forma_pago',40);
+            $table->timestamp('deleted_at')->nullable(); 
             $table->rememberToken();
             $table->timestamps();
         });
