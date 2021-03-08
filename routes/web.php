@@ -55,21 +55,48 @@ Route::get('electronica_tablas',[electronicacontroller::class,'tablas'])->name('
 /*Moneda*/
 Route::get('electronica_moneda',[monedascontroller::class,'index'])->name('moneda');
 Route::post('electronica_guardarmoneda',[monedascontroller::class,'guardarmoneda'])->name('guardarmoneda');
+//Desactivar
+Route::post('desactivarmoneda/{id_moneda}',[monedascontroller::class,'desactivarmoneda'])->name('desactivarmoneda');
+//Activacion
+Route::post('activarmoneda/{id_moneda}',[monedascontroller::class,'activarmoneda'])->name('activarmoneda');
+//Borrar
+Route::post('borrarmoneda/{id_moneda}',[monedascontroller::class,'borrarmoneda'])->name('borrarmoneda');
+
+
 
 /*Forma de pago*/
 Route::get('electronica_formapago',[formapagoscontroller::class,'index'])->name('formapago');
 Route::post('electronica_guardarformapago',[formapagoscontroller::class,'guardarformapago'])->name('guardarformapago');
+//Desactivar
+Route::post('desactivarformpago/{id_forma_pago}',[formapagoscontroller::class,'desactivarformpago'])->name('desactivarformpago');
+//Activacion
+Route::post('activarformpago/{id_forma_pago}',[formapagoscontroller::class,'activarformpago'])->name('activarformpago');
+//Borrar
+Route::post('borrarformpago/{id_forma_pago}',[formapagoscontroller::class,'borrarformpago'])->name('borrarformpago');
+
+
 
 /*Metodo de pago*/
 Route::get('electronica_metodopago',[metodopagoscontroller::class,'index'])->name('metodopago');
 Route::post('electronica_guardarmetodopago',[metodopagoscontroller::class,'guardarmetodopago'])->name('guardarmetodopago');
 //Desactivar
 Route::post('desactivarmetodopago/{id_metodo_pago}',[metodopagoscontroller::class,'desactivarmetodopago'])->name('desactivarmetodopago');
+//Activacion
+Route::post('activarmetodopago/{id_metodo_pago}',[metodopagoscontroller::class,'activarmetodopago'])->name('activarmetodopago');
+//Borrar
+Route::post('borrarmetodopago/{id_metodo_pago}',[metodopagoscontroller::class,'borrarmetodopago'])->name('borrarmetodopago');
 
 
-/*estado*/
+/*Estado*/
 Route::get('electronica_estado',[estadoscontroller::class,'index'])->name('estado');
 Route::post('electronica_guardarestado',[estadoscontroller::class,'guardarestado'])->name('guardarestado');
+//Desactivar
+Route::post('desactivarestado/{id_estado}',[estadoscontroller::class,'desactivarestado'])->name('desactivarestado');
+//Activacion
+Route::post('activarestado/{id_estado}',[estadoscontroller::class,'activarestado'])->name('activarestado');
+//Borrar
+Route::post('borrarestado/{id_estado}',[estadoscontroller::class,'borrarestado'])->name('borrarestado');
+
 
 
 /*Cliente*/

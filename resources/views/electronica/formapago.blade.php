@@ -108,34 +108,35 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($consulta2 as $formap)
                 <tr>
-                    <td data-label="Clave"><span class="block-id">01</span></td>
-                    <td data-label="Forma de pago">Efectivo</td>                
+                    <td data-label="Clave"><span class="block-id">{{$formap->id_forma_pago}}</span></td>
+                    <td data-label="Forma de pago">{{$formap->forma_pago}}</td>                
                     <td>
-                        <i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i>
+                        @if($formap->deleted_at)
+                        <form id="activarformpago" action="{{route('activarformpago',['id_forma_pago'=>$formap->id_forma_pago])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-success">Activar</button>
+                        </form>
+                        <form id="borrarformpago" action="{{route('borrarformpago',['id_forma_pago'=>$formap->id_forma_pago])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-"><i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i></button>
+                        </form>
+                        @else
+                        <form id="desactivarformpago" action="{{route('desactivarformpago',['id_forma_pago'=>$formap->id_forma_pago])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-warning">Desactivar</button>
+                        </form>
+                        @endif
                         
                         <i class="far fa-edit edit" title="Editar"></i>
                     </td>
                     
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">02</span></td>
-                    <td data-label="Forma de pago">Tarjeta de crédito</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">03</span></td>
-                    <td data-label="Forma de pago">Monedero electrónico</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                
+                </tr> 
+                @endforeach              
             </tbody>
         </table>
     </div>

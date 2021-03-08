@@ -12,6 +12,30 @@ class monedascontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function desactivarmoneda($id_moneda)
+    {
+        // Desactivacion
+        $monedas = monedas::find($id_moneda);
+        $monedas->delete();
+
+        return redirect()->to('electronica_moneda');
+    }
+    public function activarmoneda($id_moneda)
+    {
+        // Activacion
+        monedas::withTrashed()->where('id_moneda',$id_moneda)->restore();
+        
+
+        return redirect()->to('electronica_moneda');
+    }
+    public function borrarmoneda($id_moneda)
+    {
+        // Eliminacion
+        $monedas = monedas::withTrashed()->find($id_moneda)->forceDelete();
+
+
+        return redirect()->to('electronica_moneda');
+    }
 
     public function index()
     {
@@ -19,17 +43,21 @@ class monedascontroller extends Controller
                    ->take(1)->get();
         $cuantos =count($consulta);
 
+        $consulta2 = monedas::withTrashed()->select(['id_moneda','tipo_moneda','deleted_at'])
+                                       ->get();
+
         if ($cuantos == 0) {
             $id_sigue = 1;
         }
         else{
             $id_sigue = $consulta[0]->id_moneda + 1;
         }
-
+ 
         //return $id_sigue;
  
         return view ('electronica/moneda')
-            ->with('id_sigue',$id_sigue);
+            ->with('id_sigue',$id_sigue)
+            ->with('consulta2',$consulta2);
     }
 
     public function guardarmoneda(Request $request)

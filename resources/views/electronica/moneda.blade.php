@@ -1,5 +1,5 @@
 @extends('electronica.index')
-
+ 
 @section('contenido')
 <div class="content-busqueda">
 <div class="input-group-btn busquedaj" >
@@ -113,59 +113,33 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($consulta2 as $moneda)
                 <tr>
-                    <td data-label="Clave"><span class="block-id">01</span></td>
-                    <td data-label="Moneda">Tipo de moneda</td>                
+                    <td data-label="Clave"><span class="block-id">{{$moneda->id_moneda}}</span></td>
+                    <td data-label="Moneda">{{$moneda->tipo_moneda}}</td>                
                     <td>
-                        <i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i>
+                        @if($moneda->deleted_at)
+                        <form id="activarmoneda" action="{{route('activarmoneda',['id_moneda'=>$moneda->id_moneda])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-success">Activar</button>
+                        </form>
+                        <form id="borrarmoneda" action="{{route('borrarmoneda',['id_moneda'=>$moneda->id_moneda])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-"><i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i></button>
+                        </form>
+                        @else
+                        <form id="desactivarmoneda" action="{{route('desactivarmoneda',['id_moneda'=>$moneda->id_moneda])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-warning">Desactivar</button>
+                        </form>
+                        @endif
                         
                         <i class="far fa-edit edit" title="Editar"></i>
                     </td>
-                    
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">02</span></td>
-                    <td data-label="Moneda">Tipo de moneda</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">03</span></td>
-                    <td data-label="Moneda">Tipo de moneda</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">04</span></td>
-                    <td data-label="Moneda">Tipo de moneda</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">05</span></td>
-                    <td data-label="Moneda">Tipo de moneda</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">06</span></td>
-                    <td data-label="Moneda">Tipo de moneda</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
+                @endforeach
                 </tr>
             </tbody>
         </table>

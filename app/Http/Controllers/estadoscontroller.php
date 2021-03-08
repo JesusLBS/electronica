@@ -11,12 +11,41 @@ class estadoscontroller extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
+    public function desactivarestado($id_estado)
+    {
+        // Desactivacion
+        $estados = estados::find($id_estado);
+        $estados->delete();
+
+        return redirect()->to('electronica_estado');
+    }
+    public function activarestado($id_estado)
+    {
+        // Activacion
+        estados::withTrashed()->where('id_estado',$id_estado)->restore();
+        
+
+        return redirect()->to('electronica_estado');
+    }
+    public function borrarestado($id_estado)
+    {
+        // Eliminacion
+        $estados = estados::withTrashed()->find($id_estado)->forceDelete();
+
+
+        return redirect()->to('electronica_estado');
+    }
+
+
     public function index()
     {
         $consulta = estados::orderBy('id_estado','DESC')
                    ->take(1)->get();
         $cuantos =count($consulta);
+
+        $consulta2 = estados::withTrashed()->select(['id_estado','nombre_estado','deleted_at'])
+                                       ->get();
 
         if ($cuantos == 0) {
             $id_sigue = 1;
@@ -28,7 +57,8 @@ class estadoscontroller extends Controller
         //return $id_sigue;
 
         return view ('electronica/estado')
-            ->with('id_sigue',$id_sigue);
+            ->with('id_sigue',$id_sigue)
+            ->with('consulta2',$consulta2);
     }
 
    

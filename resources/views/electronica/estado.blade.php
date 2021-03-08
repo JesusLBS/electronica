@@ -113,59 +113,33 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($consulta2 as $estado)
                 <tr>
-                    <td data-label="Clave"><span class="block-id">01</span></td>
-                    <td data-label="Moneda">Estado 1</td>                
+                    <td data-label="Clave"><span class="block-id">{{$estado->id_estado}}</span></td>
+                    <td data-label="estado">{{$estado->nombre_estado}}</td>                
                     <td>
-                        <i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i>
+                        @if($estado->deleted_at)
+                        <form id="activarestado" action="{{route('activarestado',['id_estado'=>$estado->id_estado])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-success">Activar</button>
+                        </form>
+                        <form id="borrarestado" action="{{route('borrarestado',['id_estado'=>$estado->id_estado])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-"><i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i></button>
+                        </form>
+                        @else
+                        <form id="desactivarestado" action="{{route('desactivarestado',['id_estado'=>$estado->id_estado])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-warning">Desactivar</button>
+                        </form>
+                        @endif
                         
                         <i class="far fa-edit edit" title="Editar"></i>
                     </td>
-                    
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">02</span></td>
-                    <td data-label="Moneda">Estado 1</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">03</span></td>
-                    <td data-label="Moneda">Estado 1</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">04</span></td>
-                    <td data-label="Moneda">Estado 1</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">05</span></td>
-                    <td data-label="Moneda">Estado 1</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td data-label="Clave"><span class="block-id">06</span></td>
-                    <td data-label="Moneda">Estado 1</td>
-                    <td>
-                        <i class="fas fa-trash delete"></i>
-                        <i class="far fa-edit edit"></i>
-                    </td>
-
+                @endforeach  
                 </tr>
             </tbody>
         </table>

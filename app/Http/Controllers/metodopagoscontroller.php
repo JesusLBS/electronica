@@ -15,9 +15,25 @@ class metodopagoscontroller extends Controller
 
     public function desactivarmetodopago($id_metodo_pago)
     {
-        // Eliminacion
+        // Desactivacion
         $metodopagos = metodopagos::find($id_metodo_pago);
         $metodopagos->delete();
+
+        return redirect()->to('electronica_metodopago');
+    }
+    public function activarmetodopago($id_metodo_pago)
+    {
+        // Activacion
+        metodopagos::withTrashed()->where('id_metodo_pago',$id_metodo_pago)->restore();
+        
+
+        return redirect()->to('electronica_metodopago');
+    }
+    public function borrarmetodopago($id_metodo_pago)
+    {
+        // Eliminacion
+        $metodopagos = metodopagos::withTrashed()->find($id_metodo_pago)->forceDelete();
+
 
         return redirect()->to('electronica_metodopago');
     }
@@ -30,8 +46,8 @@ class metodopagoscontroller extends Controller
         $consulta = metodopagos::orderBy('id_metodo_pago','DESC')
                    ->take(1)->get();
         $cuantos =count($consulta);
-
-        $consulta2 = metodopagos::select(['id_metodo_pago','metodo_pago'])
+ 
+        $consulta2 = metodopagos::withTrashed()->select(['id_metodo_pago','metodo_pago','deleted_at'])
                                        ->get();
 
         if ($cuantos == 0) {

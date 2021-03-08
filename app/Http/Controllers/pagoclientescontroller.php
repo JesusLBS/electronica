@@ -17,7 +17,7 @@ class pagoclientescontroller extends Controller
      */
     public function desactivarpcliente($id_pcliente)
     {
-        // Desactivar
+        // Desactivar 
         $pagocliente = pagoclientes::find($id_pcliente);
         $pagocliente->delete();
 

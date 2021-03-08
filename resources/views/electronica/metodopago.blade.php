@@ -109,22 +109,33 @@
                     <th>Opciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> 
                 @foreach($consulta2 as $metodop)
                 <tr>
                     <td data-label="Clave"><span class="block-id">{{$metodop->id_metodo_pago}}</span></td>
                     <td data-label="Metodo de pago">{{$metodop->metodo_pago}}</td>                
                     <td>
                        
-
+                        @if($metodop->deleted_at)
+                        <form id="activarmetodopago" action="{{route('activarmetodopago',['id_metodo_pago'=>$metodop->id_metodo_pago])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-success">Activar</button>
+                        </form>
+                        <form id="borrarmetodopago" action="{{route('borrarmetodopago',['id_metodo_pago'=>$metodop->id_metodo_pago])}}" method="POST" enctype="multipart/form-data">
+                                                    {{csrf_field()}}
+                                                    
+                                                    <button type="button submit" class="btn btn-"><i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i></button>
+                        </form>
+                        @else
                         <form id="desactivarmetodopago" action="{{route('desactivarmetodopago',['id_metodo_pago'=>$metodop->id_metodo_pago])}}" method="POST" enctype="multipart/form-data">
                                                     {{csrf_field()}}
                                                     
                                                     <button type="button submit" class="btn btn-warning">Desactivar</button>
-                                                </form>
+                        </form>
+                        @endif
 
                         
-                        <i class="fas fa-trash delete pd-seting-ed" title="Eliminar"></i>
                         <i class="far fa-edit edit" title="Editar"></i>
                     </td>
                     

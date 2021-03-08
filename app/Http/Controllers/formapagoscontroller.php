@@ -12,13 +12,41 @@ class formapagoscontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
- 
+
+    public function desactivarformpago($id_forma_pago)
+    {
+        // Desactivacion
+        $formapagos = formapagos::find($id_forma_pago);
+        $formapagos->delete();
+
+        return redirect()->to('electronica_formapago');
+    }
+    public function activarformpago($id_forma_pago)
+    {
+        // Activacion
+        formapagos::withTrashed()->where('id_forma_pago',$id_forma_pago)->restore();
+        
+
+        return redirect()->to('electronica_formapago');
+    }
+    public function borrarformpago($id_forma_pago)
+    {
+        // Eliminacion
+        $formapagos = formapagos::withTrashed()->find($id_forma_pago)->forceDelete();
+
+
+        return redirect()->to('electronica_formapago');
+    }
 /*-----------------------------------------------------------Start Formapago----------------------------------------------*/
     public function index()
     {
         $consulta = formapagos::orderBy('id_forma_pago','DESC')
                    ->take(1)->get();
         $cuantos =count($consulta);
+
+        $consulta2 = formapagos::withTrashed()->select(['id_forma_pago','forma_pago','deleted_at'])
+                                       ->get();
+    
 
         if ($cuantos == 0) {
             $id_sigue = 1;
@@ -30,7 +58,8 @@ class formapagoscontroller extends Controller
         //return $id_sigue;
  
         return view ('electronica/formapago')
-            ->with('id_sigue',$id_sigue);
+            ->with('id_sigue',$id_sigue)
+            ->with('consulta2',$consulta2);
 
     }
 

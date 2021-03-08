@@ -34,7 +34,7 @@
                     <th>Opciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody> 
                 @foreach($consulta2 as $pcliente)
                 <tr>
                     <td data-label="Clave"><span class="block-id">{{$pcliente->id_pcliente}}</span></td>
