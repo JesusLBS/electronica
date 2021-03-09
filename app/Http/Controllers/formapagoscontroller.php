@@ -111,7 +111,7 @@ class formapagoscontroller extends Controller
             
         ]);
 
-        $data = formapagos::find($request->id_forma_pago);
+        $data = formapagos::withTrashed()->find($request->id_forma_pago);
 
        
         $data->forma_pago =  $request->forma_pago;

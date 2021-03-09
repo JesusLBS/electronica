@@ -127,7 +127,7 @@ class estadoscontroller extends Controller
             
         ]);
 
-        $dataest = estados::find($request->id_estado);
+        $dataest = estados::withTrashed()->find($request->id_estado);
 
        
         $dataest->nombre_estado =  $request->nombre_estado;

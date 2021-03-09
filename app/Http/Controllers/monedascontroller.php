@@ -107,7 +107,7 @@ class monedascontroller extends Controller
             
         ]);
 
-        $data = monedas::find($request->id_moneda);
+        $data = monedas::withTrashed()->find($request->id_moneda);
 
        
         $data->tipo_moneda =  $request->tipo_moneda;

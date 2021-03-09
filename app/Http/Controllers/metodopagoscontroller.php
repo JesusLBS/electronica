@@ -111,7 +111,7 @@ class metodopagoscontroller extends Controller
             
         ]);
 
-        $data = metodopagos::find($request->id_metodo_pago);
+        $data = metodopagos::withTrashed()->find($request->id_metodo_pago);
 
        
         $data->metodo_pago =  $request->metodo_pago;

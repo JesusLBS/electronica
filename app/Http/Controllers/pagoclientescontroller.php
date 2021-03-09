@@ -192,7 +192,7 @@ class pagoclientescontroller extends Controller
             
         ]);
 
-        $data = pagoclientes::find($request->id_pcliente);
+        $data = pagoclientes::withTrashed()->find($request->id_pcliente);
 
        
         $data->nombre_cliente           = $request->input('nombre_cliente');
