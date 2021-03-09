@@ -20,6 +20,7 @@ class metodopagoscontroller extends Controller
         $metodopagos = metodopagos::find($id_metodo_pago);
         $metodopagos->delete();
 
+        Session::flash('mensajed',"El Metodo de pago ha sido descativado correctamente");
         return redirect()->to('electronica_metodopago');
     }
     public function activarmetodopago($id_metodo_pago)
@@ -27,7 +28,7 @@ class metodopagoscontroller extends Controller
         // Activacion
         metodopagos::withTrashed()->where('id_metodo_pago',$id_metodo_pago)->restore();
         
-
+        Session::flash('mensaje',"El Metodo de pago ha sido Activado correctamente");
         return redirect()->to('electronica_metodopago');
     }
     public function borrarmetodopago($id_metodo_pago)
@@ -35,7 +36,7 @@ class metodopagoscontroller extends Controller
         // Eliminacion
         $metodopagos = metodopagos::withTrashed()->find($id_metodo_pago)->forceDelete();
 
-
+        Session::flash('mensajedelete',"El Metodo de pago ha sido Eliminad correctamente");
         return redirect()->to('electronica_metodopago');
     }
 
@@ -82,10 +83,10 @@ class metodopagoscontroller extends Controller
         $metodopago->metodo_pago       = $request->input('metodo_pago'); 
         
 
-           
+            
         $metodopago->save();
 
-        
+        Session::flash('mensaje',"El metodo de pago $request->metodo_pago se agrego correctamente");
         return redirect()->to('electronica_metodopago');
 
        
@@ -117,7 +118,7 @@ class metodopagoscontroller extends Controller
         $data->metodo_pago =  $request->metodo_pago;
         $data->save();
 
-        
+        Session::flash('mensaje',"El metodo de pago $request->metodo_pago se Actualizo correctamente");
         return redirect()->to('electronica_metodopago');
     }
 

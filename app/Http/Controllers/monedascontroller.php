@@ -18,7 +18,7 @@ class monedascontroller extends Controller
         // Desactivacion
         $monedas = monedas::find($id_moneda);
         $monedas->delete();
-
+        Session::flash('mensaje',"Moneda ha sido descativada correctamente");  
         return redirect()->to('electronica_moneda');
     }
     public function activarmoneda($id_moneda)
@@ -26,6 +26,7 @@ class monedascontroller extends Controller
         // Activacion
         monedas::withTrashed()->where('id_moneda',$id_moneda)->restore();
         
+        Session::flash('mensaje',"Forma de pago ha sido Activada correctamente");
 
         return redirect()->to('electronica_moneda');
     }
@@ -78,9 +79,9 @@ class monedascontroller extends Controller
         
 
            
-        $moneda->save();
+        $moneda->save(); 
 
-        
+        Session::flash('mensaje',"Moneda  $request->tipo_moneda ha sido Agregada correctamente");
         return redirect()->to('electronica_moneda');
 
        
@@ -113,7 +114,7 @@ class monedascontroller extends Controller
         $data->tipo_moneda =  $request->tipo_moneda;
         $data->save();
 
-        
+        Session::flash('mensaje',"Moneda  $request->tipo_moneda ha sido Actualizada correctamente");
         return redirect()->to('electronica_moneda');
     }
 

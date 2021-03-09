@@ -7,7 +7,7 @@ use App\Models\formapagos;
 use Session;
 
 class formapagoscontroller extends Controller
-{
+{ 
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +20,7 @@ class formapagoscontroller extends Controller
         $formapagos = formapagos::find($id_forma_pago);
         $formapagos->delete();
 
-        Session::flash('mensaje',"Forma de pago ha sido descativada correctamente");
+        Session::flash('mensajed',"Forma de pago ha sido descativada correctamente");
         return redirect()->to('electronica_formapago');
     }
     public function activarformpago($id_forma_pago)

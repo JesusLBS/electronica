@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\pagoclientes;
 use App\Models\estados;
 use Session;
 
@@ -34,10 +35,23 @@ class estadoscontroller extends Controller
     public function borrarestado($id_estado)
     {
         // Eliminacion
-        $estados = estados::withTrashed()->find($id_estado)->forceDelete();
 
 
-        return redirect()->to('electronica_estado');
+        $buscaestado = pagoclientes::where('id_estado',$id_estado)->get();
+        $cuantos = count($buscaestado);
+        if ($cuantos == 0) {
+            $estados = estados::withTrashed()->find($id_estado)->forceDelete();
+            Session::flash('mensajedelete',"Informacion del Estado Eliminada correctamente");
+            return redirect()->to('electronica_estado');
+                        
+        }
+        else{
+            Session::flash('mensajed',"El Estado no se ha podido Eliminar ya que contiene registros en otra tabla");
+            return redirect()->to('electronica_estado');
+                        
+
+        }
+        
     }
 
 
