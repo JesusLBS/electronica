@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\estados;
+use Session;
 
 class estadoscontroller extends Controller
 {
@@ -17,6 +18,7 @@ class estadoscontroller extends Controller
         // Desactivacion
         $estados = estados::find($id_estado);
         $estados->delete();
+        Session::flash('mensajed',"El Estado ha sido Desactivado correctamente");
 
         return redirect()->to('electronica_estado');
     }
@@ -25,6 +27,7 @@ class estadoscontroller extends Controller
         // Activacion
         estados::withTrashed()->where('id_estado',$id_estado)->restore();
         
+        Session::flash('mensaje',"Estado  ha sido Activado correctamente");
 
         return redirect()->to('electronica_estado');
     }
@@ -81,14 +84,58 @@ class estadoscontroller extends Controller
            
         $estado->save();
 
-        
+        Session::flash('mensaje',"Estado $request->nombre_estado ha sido agregado correctamente");
         return redirect()->to('electronica_estado');
  
        
     }
 
+    public function editar_estado($id_estado)
+    {
+        $dataest = estados::withTrashed()->find($id_estado);
+        return view ('electronica.editestado',['dataest'=>$dataest]); 
+
+        
+    }
+
+    
+
+    /*public function updateestado(Request $request,$id_estado)
+    {
+         
 
 
+        $estados = estados::find($id_estado);
+
+       
+        $estados->nombre_estado =  $request->nombre_estado;
+        $estados->save();
+
+        
+        return redirect()->to('electronica_estado');
+    }*/
+
+    public function updateestado(Request $request)
+    {
+
+    //return $request->input();
+
+        $this->validate($request,[
+            'id_estado' => 'required',
+            'nombre_estado' => 'required|regex:/^[A-Z][A-Z,a-z, ,ü, é, á, í, ó, ú, ñ]+$/',
+           
+            
+        ]);
+
+        $dataest = estados::find($request->id_estado);
+
+       
+        $dataest->nombre_estado =  $request->nombre_estado;
+        $dataest->save();
+
+        Session::flash('mensaje',"Estado $request->nombre_estado ha sido Actualizado correctamente");
+        return redirect()->to('electronica_estado');
+    }
 
     /**
      * Show the form for creating a new resource.

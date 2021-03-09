@@ -61,9 +61,8 @@
                             </div>
 
                         </div>
-                </div>
-
-
+                        </div>
+             
 <br>
 <br>
 <br>
@@ -136,7 +135,7 @@
                         @endif
 
                         
-                        <i class="far fa-edit edit" title="Editar"></i>
+                        <a href="{{route('editar_mpago',['id_metodo_pago'=>$metodop->id_metodo_pago])}}"><button type="button submit" class="btn btn-primary"><i class="far fa-edit edit" title="Editar"></i></button></a>
                     </td>
                     
                 </tr>

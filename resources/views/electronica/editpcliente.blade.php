@@ -1,14 +1,8 @@
-@extends('electronica.index')
+@extends('electronica.editindex')
 
 @section('contenido')
-<div class="">
-    <h2>Pago</h2>
-</div>
-<hr>
-<div class="titulo-reporte">
-    <h1>¿A dónde enviar el pedido? </h1>
-</div>
-<!------------------------------------------------------------*-----------------------------------------------------------> 
+<!------------------------------------------------------------------------------------------------------------------>
+ <!------------------------------------------------------------*-----------------------------------------------------------> 
 <br>
 <div class="ejercicio-form">
 
@@ -17,20 +11,21 @@
         <div class="col-md-8">
             <div class="card">
               <center>
-                <div class="card-header" id="registrarse">Ingresa tu nombre y dirección:</div>
+                <div class="card-header" id="actualizacioon_cliente">Actualizacion Cliente:</div>
               </center>
                 <div class="card-body">
-                  <form action = "{{route('guardarcliente')}}" method = "POST" enctype="multipart/form-data">  
-                    {{csrf_field()}}
+                  <form action = "{{route('updatepcliente')}}" method = "POST" enctype="multipart/form-data">  
+                  	@method('POST') 
+                    {{csrf_field()}} 
                     <div class="well">
                       <div class="row">
 
             <div class="col-xs-6 col-sm-6 col-md-6">
                 <div class="form-group">
-                    <label for="id_pcliente">Su clave es:
+                    <label for="id_pcliente">Clave cliente:
                      
                     </label>
-                    <input type="text" name="id_pcliente" id="id_pcliente" value="{{$id_sigue}}" readonly="readonly" class="form-control">
+                    <input type="text" name="id_pcliente" id="id_pcliente" value="{{$data['id_pcliente']}}" readonly="readonly" class="form-control">
                 </div>
             </div>
 
@@ -42,7 +37,7 @@
                       <p class="text-danger">{{$errors->first('nombre_cliente')}}</p>
                       @endif
                     </label>
-                <input type="text" name="nombre_cliente" id="nombre_cliente"  value="{{old('nombre_cliente')}}" class="form-control" placeholder="Nombre" tabindex="1">
+                <input type="text" name="nombre_cliente" id="nombre_cliente"  value="{{$data['nombre_cliente']}}" class="form-control" tabindex="1">
                 </div>
             </div>
 
@@ -54,7 +49,7 @@
                       <p class="text-danger">{{$errors->first('apellido_pcliente')}}</p>
                       @endif
                     </label>
-                    <input type="text" name="apellido_pcliente" id="apellido_pcliente" value="{{old('apellido_pcliente')}}" class="form-control" placeholder="Apellido Paterno" tabindex="2">
+                    <input type="text" name="apellido_pcliente" id="apellido_pcliente" value="{{$data['apellido_pcliente']}}" class="form-control" tabindex="2">
                 </div>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-6">
@@ -65,7 +60,7 @@
                       <p class="text-danger">{{$errors->first('apellido_mcliente')}}</p>
                       @endif
                     </label>
-                    <input type="text" name="apellido_mcliente" id="apellido_mcliente" value="{{old('apellido_mcliente')}}" class="form-control" placeholder="Apellido Materno" tabindex="2">
+                    <input type="text" name="apellido_mcliente" id="apellido_mcliente" value="{{$data['apellido_mcliente']}}" class="form-control"  tabindex="2">
                 </div>
             </div>
         </div>
@@ -77,14 +72,14 @@
                       <p class="text-danger">{{$errors->first('direccion_cliente')}}</p>
                       @endif
                     </label>
-                    <input type="text" name="direccion_cliente" id="direccion_cliente" value="{{old('direccion_cliente')}}" class="form-control" placeholder="Direccion" tabindex="2">
+                    <input type="text" name="direccion_cliente" id="direccion_cliente" value="{{$data['direccion_cliente']}}" class="form-control"  tabindex="2">
           </div> 
 
         <div class="form-group">
           <label for="dni">Departamento,suite,codigo de accseso(opc.):
 
           </label>
-          <input type="text" name="departamento_cliente" id="departamento_cliente" value="{{old('departamento_cliente')}}" class="form-control" placeholder="Departamento,suite,codigo de accseso(opc.):" tabindex="5">
+          <input type="text" name="departamento_cliente" id="departamento_cliente" value="{{$data['departamento_cliente']}}" class="form-control"  tabindex="5">
         </div>
 
         <div class="row">
@@ -96,7 +91,7 @@
                       <p class="text-danger">{{$errors->first('colonia_cliente')}}</p>
                       @endif
                     </label>
-                <input type="text" name="colonia_cliente" id="colonia_cliente"  value="{{old('colonia_cliente')}}" class="form-control" placeholder="Colonia" tabindex="1">
+                <input type="text" name="colonia_cliente" id="colonia_cliente"  value="{{$data['colonia_cliente']}}" class="form-control" tabindex="1">
                 </div>
             </div>
 
@@ -108,7 +103,7 @@
                       <p class="text-danger">{{$errors->first('ciudad_cliente')}}</p>
                       @endif
                     </label>
-                    <input type="text" name="ciudad_cliente" id="ciudad_cliente" value="{{old('ciudad_cliente')}}" class="form-control" placeholder="Ciudad" tabindex="2">
+                    <input type="text" name="ciudad_cliente" id="ciudad_cliente" value="{{$data['ciudad_cliente']}}" class="form-control"  tabindex="2">
                 </div>
             </div>
           </div>
@@ -120,7 +115,7 @@
                   
                 </label>
                 <select name = 'id_estado' class="custom-select">
-                  <option selected="">Selecciona un Estado</option>
+                  <option value="{{$data->id_estado}}">{{$data->est}}</option>
                   @foreach($estados as $est)
                   <option value="{{$est->id_estado}}">{{$est->nombre_estado}}</option>
                   @endforeach
@@ -136,14 +131,14 @@
                       <p class="text-danger">{{$errors->first('codigo_postalcliente')}}</p>
                       @endif
                     </label>
-                    <input type="text" name="codigo_postalcliente" id="codigo_postalcliente" value="{{old('codigo_postalcliente')}}" class="form-control" placeholder="Codigo Postal" tabindex="2">
+                    <input type="text" name="codigo_postalcliente" id="codigo_postalcliente" value="{{$data['codigo_postalcliente']}}" class="form-control" placeholder="Codigo Postal" tabindex="2">
                 </div>
             </div>
           </div>
 
 
           <div class="sub-titulo">
-          <b>¿Cuál es tu información de contacto?:</b>
+          <b>Información de contacto:</b>
           </div> 
           <hr>
 
@@ -159,7 +154,7 @@
                       <p class="text-danger">{{$errors->first('email_cliente')}}</p>
                       @endif
                     </label>
-                    <input type="email" name="email_cliente" id="email_cliente"  value="{{old('email_cliente')}}" class="form-control" placeholder="Email" tabindex="4">
+                    <input type="email" name="email_cliente" id="email_cliente"  value="{{$data['email_cliente']}}" class="form-control"  tabindex="4">
                     <i class="far fa-envelope"></i>
                 </div>
             </div>
@@ -172,7 +167,7 @@
                       <p class="text-danger">{{$errors->first('celular_cliente')}}</p>
                       @endif
                     </label>
-                    <input type="text" name="celular_cliente" id="celular_cliente" value="{{old('celular_cliente')}}"  class="form-control" placeholder="Celular" tabindex="3">
+                    <input type="text" name="celular_cliente" id="celular_cliente" value="{{$data['celular_cliente']}}"  class="form-control" tabindex="3">
                     <i class="fas fa-mobile-alt"></i>
                 </div>
             </div>
@@ -189,7 +184,7 @@
                   
                 </label>
                 <select name = 'id_forma_pago' class="custom-select">
-                  <option selected="">Selecciona Forma de pago</option>
+                  <option value="{{$data->id_forma_pago}}">{{$data->fpago}}</option>
                   @foreach($formapagos as $fpago)
                   <option value="{{$fpago->id_forma_pago}}">{{$fpago->forma_pago}}</option>
                   @endforeach
@@ -246,10 +241,8 @@
                         
                         <div class="form-group row mb-0 ">
                             <div class="col-md-6 offset-md-4 ">
-                                <button type="button" class="btn btn-outline-danger font-weight-bold">
-                                     Cancelar
-                                </button>
-                                <input type="submit" class="btn btn-outline-warning font-weight-bold"  value="Pagar Ahora"/>
+                                <input type="button" class="btn btn-outline-danger"  value="Regresar" name="Back2" onclick="history.back()"/>
+                                <input type="submit" class="btn btn-outline-primary font-weight-bold"  value="Actualizar"/>
                             </div>
                         </div>
         
@@ -286,4 +279,9 @@
 
 
 
+
+
+
+
+<!------------------------------------------------------------------------------------------------------------------>
 @stop

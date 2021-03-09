@@ -23,6 +23,7 @@ use App\Models\proveedores;
 use App\Models\razonsocials;
 use App\Models\tipoempleados;
 use App\Models\tipofacturas;
+use Session;
 
 
 class logincontroller extends Controller

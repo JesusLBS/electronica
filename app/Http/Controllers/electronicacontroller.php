@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\estados;
+use Session;
 
 class electronicacontroller extends Controller
 {

@@ -13,9 +13,41 @@
 
 
 <div class="titulo-reporte">
-    <h1>Reporte Cliente</h1>
+    <h1>Reporte Clientes Online</h1>
 </div>
 <br>
+
+<!-------------------------------------------------- Mensaje ---------------------------------------------------------------->
+
+
+@if(Session::has('mensaje'))
+<div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <center>
+        <b style="font-size: 1.4em">"{{Session::get('mensaje')}}"</b>
+    </center>
+</div>
+@endif
+
+@if(Session::has('mensajed'))
+<div class="alert alert-warning alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <center>
+        <b style="font-size: 1.4em">"{{Session::get('mensajed')}}"</b>
+    </center>
+</div>
+@endif
+
+@if(Session::has('mensajedelete'))
+<div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <center>
+        <b style="font-size: 1.4em">"{{Session::get('mensajedelete')}}"</b>
+    </center>
+</div>
+@endif
+
+<!--------------------------------------------------*---------------------------------------------------------------->
 <!-------------------------------------------------- Tabla de Consulta(Reporte) ---------------------------------------------------------------->
 
 
@@ -68,7 +100,7 @@
 
                         
                         
-                        <i class="far fa-edit edit" title="Editar"></i>
+                        <a href="{{route('editar_pcliente',['id_pcliente'=>$pcliente->id_pcliente])}}"><button type="button submit" class="btn btn-primary"><i class="far fa-edit edit" title="Editar"></i></button></a>
                     </td>
                     
                 </tr>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\metodopagos;
+use Session;
 
 class metodopagoscontroller extends Controller
 {
@@ -12,7 +13,7 @@ class metodopagoscontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+ 
     public function desactivarmetodopago($id_metodo_pago)
     {
         // Desactivacion
@@ -89,6 +90,37 @@ class metodopagoscontroller extends Controller
 
        
     }
+
+    public function editar_mpago($id_metodo_pago)
+    {
+        $data = metodopagos::withTrashed()->find($id_metodo_pago);
+        return view ('electronica.editmpago',['data'=>$data]); 
+
+        
+    }
+
+    public function updatempago(Request $request)
+    {
+
+    //return $request->input();
+
+        $this->validate($request,[
+            'id_metodo_pago' => 'required',
+            'metodo_pago' => 'required|regex:/^[A-Z][A-Z,a-z, ,ü, é, á, í, ó, ú, ñ]+$/',
+           
+            
+        ]);
+
+        $data = metodopagos::find($request->id_metodo_pago);
+
+       
+        $data->metodo_pago =  $request->metodo_pago;
+        $data->save();
+
+        
+        return redirect()->to('electronica_metodopago');
+    }
+
 
     /**
      * Show the form for creating a new resource.

@@ -61,6 +61,10 @@ Route::post('desactivarmoneda/{id_moneda}',[monedascontroller::class,'desactivar
 Route::post('activarmoneda/{id_moneda}',[monedascontroller::class,'activarmoneda'])->name('activarmoneda');
 //Borrar
 Route::post('borrarmoneda/{id_moneda}',[monedascontroller::class,'borrarmoneda'])->name('borrarmoneda');
+//Editar
+Route::get('editar_moneda/{id_moneda}',[monedascontroller::class,'editar_moneda'])->name('editar_moneda');
+
+Route::post('/updatemoneda',[monedascontroller::class,'updatemoneda'])->name('updatemoneda');
 
 
 
@@ -73,7 +77,10 @@ Route::post('desactivarformpago/{id_forma_pago}',[formapagoscontroller::class,'d
 Route::post('activarformpago/{id_forma_pago}',[formapagoscontroller::class,'activarformpago'])->name('activarformpago');
 //Borrar
 Route::post('borrarformpago/{id_forma_pago}',[formapagoscontroller::class,'borrarformpago'])->name('borrarformpago');
+//Editar
+Route::get('editar_formpago/{id_forma_pago}',[formapagoscontroller::class,'editar_formpago'])->name('editar_formpago');
 
+Route::post('/updateformpago',[formapagoscontroller::class,'updateformpago'])->name('updateformpago');
 
 
 /*Metodo de pago*/
@@ -85,11 +92,22 @@ Route::post('desactivarmetodopago/{id_metodo_pago}',[metodopagoscontroller::clas
 Route::post('activarmetodopago/{id_metodo_pago}',[metodopagoscontroller::class,'activarmetodopago'])->name('activarmetodopago');
 //Borrar
 Route::post('borrarmetodopago/{id_metodo_pago}',[metodopagoscontroller::class,'borrarmetodopago'])->name('borrarmetodopago');
+//Editar
+Route::get('editar_mpago/{id_metodo_pago}',[metodopagoscontroller::class,'editar_mpago'])->name('editar_mpago');
+
+Route::post('/updatempago',[metodopagoscontroller::class,'updatempago'])->name('updatempago');
+
 
 
 /*Estado*/
 Route::get('electronica_estado',[estadoscontroller::class,'index'])->name('estado');
 Route::post('electronica_guardarestado',[estadoscontroller::class,'guardarestado'])->name('guardarestado');
+//Editar
+Route::get('editar_estado/{id_estado}',[estadoscontroller::class,'editar_estado'])->name('editar_estado');
+
+Route::post('/update-estado',[estadoscontroller::class,'updateestado'])->name('estado.update');
+
+
 //Desactivar
 Route::post('desactivarestado/{id_estado}',[estadoscontroller::class,'desactivarestado'])->name('desactivarestado');
 //Activacion
@@ -111,4 +129,8 @@ Route::post('desactivarpcliente/{id_pcliente}',[pagoclientescontroller::class,'d
 Route::post('activarpcliente/{id_pcliente}',[pagoclientescontroller::class,'activarpcliente'])->name('activarpcliente');
 //Borrar
 Route::post('borrarpcliente/{id_pcliente}',[pagoclientescontroller::class,'borrarpcliente'])->name('borrarpcliente');
+//Editar
+Route::get('editar_pcliente/{id_pcliente}',[pagoclientescontroller::class,'editar_pcliente'])->name('editar_pcliente');
 
+Route::post('/updatepcliente',[pagoclientescontroller::class,'updatepcliente'])->name('updatepcliente');
+ 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\monedas;
+use Session;
 
 class monedascontroller extends Controller
 {
@@ -84,6 +85,39 @@ class monedascontroller extends Controller
 
        
     }
+
+
+    public function editar_moneda($id_moneda)
+    {
+        $data = monedas::withTrashed()->find($id_moneda);
+        return view ('electronica.editmoneda',['data'=>$data]); 
+
+        
+    }
+
+    public function updatemoneda(Request $request)
+    {
+
+    //return $request->input();
+
+        $this->validate($request,[
+            'id_moneda' => 'required',
+            'tipo_moneda' => 'required|regex:/^[A-Z][A-Z,a-z, ,ü, é, á, í, ó, ú, ñ]+$/',
+           
+            
+        ]);
+
+        $data = monedas::find($request->id_moneda);
+
+       
+        $data->tipo_moneda =  $request->tipo_moneda;
+        $data->save();
+
+        
+        return redirect()->to('electronica_moneda');
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

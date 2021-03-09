@@ -137,7 +137,8 @@
                         </form>
                         @endif
                         
-                        <i class="far fa-edit edit" title="Editar"></i>
+                        <a href="{{route('editar_moneda',['id_moneda'=>$moneda->id_moneda])}}"><button type="button submit" class="btn btn-primary"><i class="far fa-edit edit" title="Editar"></i></button></a>
+
                     </td>
                 @endforeach
                 </tr>

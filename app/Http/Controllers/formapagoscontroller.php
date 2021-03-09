@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\formapagos;
+use Session;
 
 class formapagoscontroller extends Controller
 {
@@ -19,6 +20,7 @@ class formapagoscontroller extends Controller
         $formapagos = formapagos::find($id_forma_pago);
         $formapagos->delete();
 
+        Session::flash('mensaje',"Forma de pago ha sido descativada correctamente");
         return redirect()->to('electronica_formapago');
     }
     public function activarformpago($id_forma_pago)
@@ -26,7 +28,7 @@ class formapagoscontroller extends Controller
         // Activacion
         formapagos::withTrashed()->where('id_forma_pago',$id_forma_pago)->restore();
         
-
+        Session::flash('mensaje',"Forma de pago ha sido Activada correctamente");
         return redirect()->to('electronica_formapago');
     }
     public function borrarformpago($id_forma_pago)
@@ -34,7 +36,7 @@ class formapagoscontroller extends Controller
         // Eliminacion
         $formapagos = formapagos::withTrashed()->find($id_forma_pago)->forceDelete();
 
-
+        Session::flash('mensajedelete',"Forma de pago ha sido Eliminada correctamente");
         return redirect()->to('electronica_formapago');
     }
 /*-----------------------------------------------------------Start Formapago----------------------------------------------*/
@@ -82,12 +84,42 @@ class formapagoscontroller extends Controller
            
         $moneda->save();
 
-        
+        Session::flash('mensaje',"Forma de pago $request->forma_pago ha sido Agregada correctamente");
         return redirect()->to('electronica_formapago');
 
        
     }
 /*-----------------------------------------------------------End Formapago----------------------------------------------*/
+
+    public function editar_formpago($id_forma_pago)
+    {
+        $data = formapagos::withTrashed()->find($id_forma_pago);
+        return view ('electronica.editformpago',['data'=>$data]); 
+
+        
+    }
+
+    public function updateformpago(Request $request)
+    {
+
+    //return $request->input();
+
+        $this->validate($request,[
+            'id_forma_pago' => 'required',
+            'forma_pago' => 'required|regex:/^[A-Z][A-Z,a-z, ,ü, é, á, í, ó, ú, ñ]+$/',
+           
+            
+        ]);
+
+        $data = formapagos::find($request->id_forma_pago);
+
+       
+        $data->forma_pago =  $request->forma_pago;
+        $data->save();
+
+        Session::flash('mensaje',"Forma de pago $request->forma_pago ha sido modificada correctamente");
+        return redirect()->to('electronica_formapago');
+    }
     /**
      * Show the form for creating a new resource.
      *
