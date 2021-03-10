@@ -77,7 +77,7 @@
                                         <input type="checkbox" name="remember">Remember Me
                                     </label>
                                     <label>
-                                        <a href="#">Forgotten Password?</a>
+                                        <a href="#">¿Olvidaste tu contraseña?</a>
                                     </label>
                                 </div>
                                 <div class="form-group">
@@ -96,7 +96,7 @@
                                     </p>
                                     @endif
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Iniciar Sesion</button>
                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
@@ -107,8 +107,8 @@
                             <!--------------------------------------------------Login---------------------------------------------------------------->
                             <div class="register-link">
                                 <p>
-                                    Don't you have account?
-                                    <a href="{{route('registro')}}">Sign Up Here</a>
+                                    ¿No tienes cuenta? 
+                                    <a href="{{route('registro')}}">Registrate aquí</a>
                                 </p>
                             </div>
                         </div>
