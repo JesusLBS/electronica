@@ -88,7 +88,7 @@ class estadoscontroller extends Controller
             
         ]);
 
-         $estado = new estados;
+        $estado = new estados;
 
          
         $estado->id_estado        = $request->input('id_estado'); 

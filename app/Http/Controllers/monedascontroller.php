@@ -35,6 +35,7 @@ class monedascontroller extends Controller
         // Eliminacion
         $monedas = monedas::withTrashed()->find($id_moneda)->forceDelete();
 
+        Session::flash('mensajedelete',"Informacion de moneda ha sido Eliminada correctamente");
 
         return redirect()->to('electronica_moneda');
     }
