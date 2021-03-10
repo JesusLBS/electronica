@@ -25,7 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'two_factor_key',
+        'aceptotc_c',
     ];
 
     /**
