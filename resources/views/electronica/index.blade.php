@@ -467,7 +467,7 @@
 
    <hr>
 <div class="">
-    <a href="#">Politica de Privacidad</a>
+    <a href="{{route('politica')}}">Politica de Privacidad</a>
 </div>
 
             <!-- END MAIN CONTENT-->
