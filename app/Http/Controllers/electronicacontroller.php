@@ -25,6 +25,13 @@ class electronicacontroller extends Controller
 
 
 
+    public function politica()
+    {
+        return view ('electronica/politica');
+    }
+
+
+
  
 
 
