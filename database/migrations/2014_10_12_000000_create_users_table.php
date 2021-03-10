@@ -19,9 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-
-            
-            $table->string('two_factor_key')->nullable();
+            $table->boolean('aceptotc_c');
 
         
             $table->rememberToken();
