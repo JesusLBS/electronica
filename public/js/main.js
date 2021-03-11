@@ -1706,5 +1706,17 @@ document.oncontextmenu = function (e) {
 
 //Accion-confirmar-Registrarse
 function confirmar() {
-  confirm('Al registrarte confimas que has aceptado los terminos y condiciones')        
+var i =   confirm('Al registrarte confimas que has aceptado los terminos y condiciones')        
+
+  if(i == true){
+
+    console.log("acepto")
+
+  }
+  else{
+    setTimeout(function () {
+        location.reload()
+    }, 100);
+  }
+
 }
