@@ -89,15 +89,18 @@
                                     
                                 </div>
                                 <div class="form-group">
-                                    <input class="au-input au-input--full" type="text" name="captcha" placeholder="Ingresa el captcha" required="">
+                                    <input class="au-input au-input--full" name="captcha"  onkeyup="loginvalidar()" type="text" id="mensaje" placeholder="Ingresa el captcha" required>
+
                                     @if($errors->first('captcha'))
                                     <p class="text-danger">
                                         {{$errors->first('captcha')}}
                                     </p>
                                     @endif
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Iniciar Sesion</button>
-                                <div class="social-login-content">
+                                
+                                <button type="submit" id="enviar" class="btn btn-outline-success au-btn--block" disabled>
+                                     <b>Iniciar Sesion</b>
+                                </button>                                <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">sign in with facebook</button>
                                         <button class="au-btn au-btn--block au-btn--blue2">sign in with twitter</button>
