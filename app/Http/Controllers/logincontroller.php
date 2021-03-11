@@ -183,22 +183,23 @@ class logincontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request ,$aceptotc_c = 1)
     {
         $user = $this->validate(request(), [
-            'name'      => ['required', 'string', 'max:255'],
-            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password'  => ['required', 'string', 'min:8'],
-           
-
+            'name'        => ['required', 'string', 'max:255'],
+            'email'       => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password'    => ['required', 'string', 'min:8'],
+            'aceptotc_c'  => ['required'],
         ]);
         
+
         $newuser = new User;
 
          
-        $newuser->name        = $request->input('name'); 
-        $newuser->email       = $request->input('email'); 
-        $newuser->password    = $request->input('password'); 
+        $newuser->name          = $request->input('name'); 
+        $newuser->email         = $request->input('email'); 
+        $newuser->password      = $request->input('password'); 
+        $newuser->aceptotc_c    = $request->input('aceptotc_c'); 
 
            
         $newuser->fill([
@@ -207,6 +208,7 @@ class logincontroller extends Controller
 
         
         return redirect()->to('electronica_index');
+        
     }
 
 
