@@ -65,8 +65,8 @@
                                     <label>
                                         <b>Acepta la política de privacidad y los términos de servicio para terminar de crear su cuenta.</b>
 
-                                        <br>
-                                        <input type="checkbox" name="test" id="test">Acepto la Política de privacidad y los Términos de condiciones
+                                        <br> 
+                                        <input type="checkbox" name="aceptotc_c" id="aceptotc_c">Acepto la Política de privacidad y los Términos de condiciones
                                     </label>
                                 </div>
                                 <button type="submit"  id="enviar" class="btn btn-outline-success au-btn--block" onclick="confirmar()" disabled >
