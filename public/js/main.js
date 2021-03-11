@@ -1671,3 +1671,40 @@
   }
 
 })(jQuery);
+
+
+//Checheckbox-Registrarse-Terminos
+var checkbox = document.getElementById('test');
+var boton = document.getElementById("enviar");
+checkbox.addEventListener( 'change', function() {
+    if(this.checked) {
+       //alert('checkbox esta seleccionado');
+       console.log("Se muestra")
+            boton.removeAttribute('disabled')
+    }else{
+      boton.setAttribute('disabled', "true");
+    }
+  });
+//Blockear-click
+document.oncontextmenu = function (e) {
+  e.preventDefault();
+}
+//
+ function loginvalidar() {
+          console.log("change");
+          const mensaje = document.getElementById("mensaje");
+          const boton = document.getElementById("enviar");
+          console.log(boton)
+          
+          if (mensaje.value.trim() !== "") {
+            console.log("Se muestra")
+            boton.removeAttribute('disabled')
+          } else {
+            boton.setAttribute('disabled', "true");
+          }
+        }
+
+//Accion-confirmar-Registrarse
+function confirmar() {
+  confirm('Al registrarte confimas que has aceptado los terminos y condiciones')        
+}
