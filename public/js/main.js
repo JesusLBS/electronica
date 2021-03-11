@@ -1674,7 +1674,7 @@
 
 
 //Checheckbox-Registrarse-Terminos
-var checkbox = document.getElementById('test');
+var checkbox = document.getElementById('aceptotc_c');
 var boton = document.getElementById("enviar");
 checkbox.addEventListener( 'change', function() {
     if(this.checked) {
