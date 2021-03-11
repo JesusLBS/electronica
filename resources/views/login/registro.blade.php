@@ -41,10 +41,10 @@
             <div class="container">
                 <div class="login-wrap">
                     <div class="login-content">
-                        <div class="login-logo">
-                            <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
-                            </a>
+                        <div class="login-logo" style="background-color: black; color: white; font-weight: bold;">
+                            
+                                Registro
+                            
                         </div>
                         <div class="login-form">
                             <form action="{{route('registroe')}}" method="POST">
@@ -63,11 +63,15 @@
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
-                                        <input type="checkbox" name="aceptotc_c">Acepto los términos y condiciones
+                                        <b>Acepta la política de privacidad y los términos de servicio para terminar de crear su cuenta.</b>
+
+                                        <br>
+                                        <input type="checkbox" name="test" id="test">Acepto la Política de privacidad y los Términos de condiciones
                                     </label>
                                 </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Registrarse</button>
-                                <div class="social-login-content">
+                                <button type="submit"  id="enviar" class="btn btn-outline-success au-btn--block" onclick="confirmar()" disabled >
+                                     <b>Registrarse</b>
+                                </button>                                 <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
                                         <button class="au-btn au-btn--block au-btn--blue2">register with twitter</button>
@@ -76,8 +80,8 @@
                             </form>
                             <div class="register-link">
                                 <p>
-                                    Already have account?
-                                    <a href="{{route('/')}}">Sign In</a>
+                                   ¿Ya tienes cuenta? 
+                                    <a href="{{route('/')}}">Inicia Sesion</a>
                                 </p>
                             </div>
                         </div>
@@ -111,7 +115,14 @@
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
+<script type="text/javascript">
+    
 
+
+
+
+
+</script>
 </body>
 
 </html>
