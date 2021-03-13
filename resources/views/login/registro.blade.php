@@ -61,17 +61,7 @@
                                     <label>Password</label>
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <b>Acepta la política de privacidad y los términos de servicio para terminar de crear su cuenta.</b>
-
-                                        <br> 
-                                        <input type="checkbox" name="aceptotc_c" id="aceptotc_c">Acepto la Política de privacidad y los Términos de condiciones
-                                    </label>
-                                </div>
-                                <button type="submit"  id="enviar" class="btn btn-outline-success au-btn--block" onclick="confirmar()" disabled >
-                                     <b>Registrarse</b>
-                                </button>                                 <div class="social-login-content">
+                                                               <div class="social-login-content">
                                     <div class="social-button">
                                         <button class="au-btn au-btn--block au-btn--blue m-b-20">register with facebook</button>
                                         <button class="au-btn au-btn--block au-btn--blue2">register with twitter</button>
